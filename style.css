@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +7,12 @@
 }
 
 body {
-  background-color: #f8d3d0;
+  background-color: white;
+  font-family: "Rubik", sans-serif;
 }
 
 header {
-  background-color: #e98880;
+  background-color: black;
   height: 60px;
   position: fixed;
   top: 0;
@@ -74,9 +77,11 @@ header {
   justify-content: space-between;
 }
 
+
+
 .heart {
   font-size: 25px;
-  color: #dc6157;
+  color: red;
   cursor: pointer;
   transition: all 0.4s ease;
 }
@@ -88,15 +93,15 @@ header {
 .buy-btn {
   padding: 6px 40px;
   background-color: transparent;
-  border: 2px solid #e98880;
+  border: 2px solid black;
   color: black;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
 }
 
 .buy-btn:hover {
-  background-color: #e98880;
+  background-color: black;
   color: white;
 }
 
@@ -107,7 +112,7 @@ header {
   top: 0;
   right: 0;
   transform: translateX(1000px);
-  background-color: #f4a59e;
+  background-color: white;
   transition: transform 0.4s ease;
 }
 
@@ -166,20 +171,21 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .checkout-btn {
   padding: 6px 40px;
   background-color: transparent;
-  border: 2px solid #f36c5f;
+  border: 2px solid black;
   color: black;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
 }
 
 .checkout-btn:hover {
-  background-color: #f36c5f;
+  background-color: black;
   color: white;
 }
 
@@ -209,7 +215,7 @@ header {
   top: -10px;
   right: -10px;
   border: 2px solid white;
-  background-color: #f36c5f;
+  background-color: red;
   color: white;
   width: 20px;
   height: 20px;

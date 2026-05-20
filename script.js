@@ -161,14 +161,12 @@ function subtotal() {
   }
 }
 
-
-function cartCount(){
+function cartCount() {
   let count = 0;
   cart.forEach((item) => {
-      count += item.quantity;
-  })  
+    count += item.quantity;
+  });
   if (cartCountEl) {
-    cartCountEl.innerHTML = cart.length;
+    cartCountEl.textContent = count;
   }
-  cartCountEl.textContent = count;
-};
+}
