@@ -14,16 +14,20 @@
 
 <body>
   <header>
-    <i class="fa-solid fa-cart-arrow-down cart-btn"></i>
-    <div class="carts">
-      <i class="fa-solid fa-xmark cart-close-btn"></i>
-      <div class="carts-grid"></div>
-      <div class="cart-checkout">
-        <di class="subtotal"><span>Subtotal</span><span>$265.00</span></di>
-        <button class="checkout-btn">Checkout</button>
-      </div>
+  <div class="header-cart-container">
+    <i class="fa-solid fa-cart-arrow-down cart-btn">
+      <div class="cart-item-count"></div>
+    </i>
+  </div> 
+  <div class="carts">
+    <i class="fa-solid fa-xmark cart-close-btn"></i>
+    <div class="carts-grid"></div>
+    <div class="cart-checkout">
+      <div class="subtotal-container"><span>Subtotal</span><span class="subtotal"></span></div>
+      <button class="checkout-btn">Checkout</button>
     </div>
-  </header>
+  </div>
+</header>
   <div class="grid-container"></div>
 </body>
 </html>   
