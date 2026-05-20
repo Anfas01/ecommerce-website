@@ -5,6 +5,9 @@ const gridContainer = document.querySelector(".grid-container");
 const cartBtn = document.querySelector(".cart-btn");
 const cartCloseBtn = document.querySelector(".cart-close-btn");
 
+
+
+
 cartBtn.addEventListener("click", () => {
   const carts = document.querySelector(".carts");
   carts.style.transform = "translateX(0)";
@@ -47,6 +50,7 @@ function addToCart() {
       }
       localStorage.setItem("cart", JSON.stringify(cart));
       carts();
+
     });
   });
 }
@@ -94,7 +98,7 @@ function carts() {
                         <span>1</span>
                         <i class="fa-solid fa-plus"></i>
                     </span>
-                    <span>Remove</span>
+                    <span class="cart-remove" data-id="${product.id}">Remove</span>
                     </div>
                 </div>
             </div>
@@ -102,4 +106,16 @@ function carts() {
     }
   });
   cartsGridEl.innerHTML = html;
+
+    const cartRemoveEl = document.querySelectorAll(".cart-remove");
+
+    cartRemoveEl.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            console.log('delt')
+            const id = Number(btn.dataset.id);
+            cart = cart.filter((item) => item.productId !== id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            render();
+        });
+    });
 }

@@ -196,3 +196,12 @@ header {
 .cart-close-btn:hover {
     transform: scale(1.2);
 }
+
+.cart-remove {
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.cart-remove:hover {
+    transform: scale(1.2);
+}
