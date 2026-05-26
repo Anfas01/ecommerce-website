@@ -1,0 +1,186 @@
+/* Shopping Cart Sidebar Container */
+.carts {
+  width: 600px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(1000px);
+  background-color: white;
+  transition: transform 0.4s ease;
+  border-left: 1px solid black;
+}
+
+/* Inner Grid for Cart Items (Scrollable) */
+.carts-grid {
+  display: grid;
+  gap: 10px;
+  padding: 10px 20px;
+  overflow-y: scroll;
+  max-height: 250px;
+}
+
+.carts-grid img {
+  width: 150px;
+}
+
+/* Individual Cart Item Layout */
+.cart-container {
+  display: flex;
+}
+
+/* Text and Action Area for Cart Items */
+.cart-info-action-container {
+  padding: 20px 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Row layout for Price and Quantity controls */
+.cart-info,
+.cart-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Quantity selector styles (+ / - / number) */
+.cart-quantity i {
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.cart-quantity i:hover {
+  transform: scale(1.2);
+}
+
+.cart-quantity span {
+  font-family: monospace;
+  font-size: 20px;
+}
+
+/* Cart Summary and Final Action Button */
+.cart-checkout {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Total Price Display */
+.subtotal-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+/* Checkout Action Button */
+.checkout-btn {
+  padding: 6px 40px;
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.checkout-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Recommendation Section at the bottom of the Cart */
+.cart-recommendation-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+}
+
+.cart-recommendation-container .cart-recommendation-title {
+  padding: 0 20px;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Visual underline decorative element for the title */
+.cart-recommendation-container .cart-recommendation-title::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 11%;
+  transform: translateX(70%);
+  height: 1px;
+  background-color: #000000;
+}
+
+/* Horizontal scrolling grid for suggested products */
+.cart-recommendation-grid {
+  height: 40%;
+  width: 100%;
+  background-color: transparent;
+  display: grid;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: start;
+  padding-top: 10px;
+  grid-auto-flow: column;
+  gap: 20px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+
+.cart-recommendation-grid img {
+  width: 150px;
+  cursor: pointer;
+}
+
+.cart-close-btn {
+  margin: 10px;
+  margin-bottom: 60px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 20px;
+}
+
+.cart-close-btn:hover {
+  transform: rotate(90deg);
+}
+
+/* "Remove" text link in cart items */
+.cart-remove {
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.cart-remove:hover {
+  transform: scale(1.2);
+}
+
+/* Header area inside the sidebar */
+.cart-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+/* Centered Cart Title in sidebar */
+.cart-title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}

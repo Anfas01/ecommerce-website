@@ -7,6 +7,7 @@
   <title>E-Commerce</title>
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cartstyle.css">
   <!-- Application Logic (ES Module) -->
   <script type="module" src="script.js" defer></script>
   <!-- Font Awesome for Icons -->
@@ -16,17 +17,20 @@
 </head>
 
 <body>
-  <!-- Hero/Landing Section -->
+  <!-- Landing Section: Initial view when the user arrives -->
   <div class="landing-page">
     <h1>Welcome.</h1>
   </div>
 
   <header>
+    <!-- Cart trigger button showing current item count -->
     <div class="header-cart-container">
       <div class="cart-btn">
         Cart(<span class="cart-item-count"></span>)
       </div>
     </div>
+
+    <!-- Sliding Cart Sidebar: Hidden by default via CSS transforms -->
     <div class="carts">
       <div class="cart-header">
         <i class="fa-solid fa-xmark cart-close-btn"></i>
@@ -34,7 +38,11 @@
           <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
         </div>
       </div>
+
+      <!-- Target container for cart items injected by cart.js -->
       <div class="carts-grid"></div>
+
+      <!-- Summary and Checkout actions -->
       <div class="cart-checkout">
         <div class="subtotal-container">
           <span>Subtotal</span>
@@ -42,18 +50,11 @@
         </div>
         <button class="checkout-btn">Checkout</button>
       </div>
+
+      <!-- Static recommendation section within the cart -->
       <div class="cart-recommendation-container">
         <span class="cart-recommendation-title">You might also like</span>
         <div class="cart-recommendation-grid">
-          <div>
-            <img src="Images/caio-coelho-QRN47la37gw-unsplash.jpg" alt="">
-          </div>
-          <div>
-            <img src="Images/red-pullover-hanging.jpg" alt="">
-          </div>
-          <div>
-            <img src="Images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg" alt="">
-          </div>
           <div>
             <img src="Images/caio-coelho-QRN47la37gw-unsplash.jpg" alt="">
           </div>
@@ -67,6 +68,8 @@
       </div>
     </div>
   </header>
+
+  <!-- Main Product Grid: Target container for products injected by script.js -->
   <div class="grid-container"></div>
 </body>
 
