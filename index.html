@@ -71,6 +71,34 @@
 
   <!-- Main Product Grid: Target container for products injected by script.js -->
   <div class="grid-container"></div>
+
+  <!-- Add to Cart Alert: Hidden by default via CSS transforms -->
+  <div class="alert-container">
+    <div class="alert-content">
+      <div class="alert-header">
+        <div class="alert-title">
+          <i style="color: green; font-size: 14px;" class="fa-solid fa-check"></i>
+          Item added to your cart
+        </div>
+        <i class="fa-solid fa-xmark alert-close-btn"></i>
+      </div>
+      <div class="alert-item-info">
+        <div class="alert-item-img-container">
+          <img class="alert-item-img" src="Images/caio-coelho-QRN47la37gw-unsplash.jpg">
+        </div>
+        <div class="alert-item-name-price-quantity">
+          <div class="alert-item-name">Product Name</div>
+          <div class="alert-item-price">$0.00</div>
+          <div class="alert-item-quantity">Quantity: 0</div>
+        </div>
+      </div>
+      <div class="alert-btns">
+        <button>View Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

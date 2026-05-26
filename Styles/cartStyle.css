@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  transform: translateX(1000px);
+  transform: translateX(100%);
   background-color: white;
   transition: transform 0.4s ease;
   border-left: 1px solid black;
