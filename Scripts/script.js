@@ -4,6 +4,8 @@ import { cart, generateCartHtml, subtotal, cartCount } from "./cart.js";
 const gridContainer = document.querySelector(".grid-container");
 // Cart trigger button (header icon)
 const cartBtn = document.querySelector(".cart-btn");
+// Header element
+const header = document.querySelector("header");
 
 /**
  * Opens the cart sidebar by resetting the transform property.
@@ -91,3 +93,18 @@ function generateHtml() {
   gridContainer.innerHTML = html;
   attachProductListeners();
 }
+
+
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY) {
+    // Scrolling Down
+    header.classList.add("header-hidden");
+  } else {
+    // Scrolling Up
+    header.classList.remove("header-hidden");
+  } 
+  // Update the last scroll position
+  lastScrollY = window.scrollY;
+});
