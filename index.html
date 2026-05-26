@@ -5,40 +5,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce</title>
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <!-- Application Logic (ES Module) -->
   <script type="module" src="script.js" defer></script>
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+  <!-- Hero/Landing Section -->
   <div class="landing-page">
     <h1>Welcome.</h1>
   </div>
+
   <header>
-  <div class="header-cart-container">
-    <div class="cart-btn">
-      Cart(<span class="cart-item-count"></span>)
-    </div>
-  </div> 
-  <div class="carts">
-    <div class="cart-header">
-      <i class="fa-solid fa-xmark cart-close-btn"></i>
-      <div class="cart-title">
-        <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
+    <div class="header-cart-container">
+      <div class="cart-btn">
+        Cart(<span class="cart-item-count"></span>)
       </div>
     </div>
-    <div class="carts-grid"></div>
-    <div class="cart-checkout">
-      <div class="subtotal-container">
-        <span>Subtotal</span>
-        <span class="subtotal"></span>
+    <div class="carts">
+      <div class="cart-header">
+        <i class="fa-solid fa-xmark cart-close-btn"></i>
+        <div class="cart-title">
+          <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
+        </div>
       </div>
-      <button class="checkout-btn">Checkout</button>
+      <div class="carts-grid"></div>
+      <div class="cart-checkout">
+        <div class="subtotal-container">
+          <span>Subtotal</span>
+          <span class="subtotal"></span>
+        </div>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+      <div class="cart-recommendation-container">
+        <span class="cart-recommendation-title">You might also like</span>
+        <div class="cart-recommendation-grid">
+          <div>
+            <img src="Images/caio-coelho-QRN47la37gw-unsplash.jpg" alt="">
+          </div>
+          <div>
+            <img src="Images/red-pullover-hanging.jpg" alt="">
+          </div>
+          <div>
+            <img src="Images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg" alt="">
+          </div>
+          <div>
+            <img src="Images/caio-coelho-QRN47la37gw-unsplash.jpg" alt="">
+          </div>
+          <div>
+            <img src="Images/red-pullover-hanging.jpg" alt="">
+          </div>
+          <div>
+            <img src="Images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg" alt="">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
   <div class="grid-container"></div>
 </body>
-</html>   
+
+</html>

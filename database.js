@@ -1,3 +1,7 @@
+/**
+ * Product Catalog Database
+ * Contains the source of truth for all products, prices, and images.
+ */
 export const database = [
   {
     id: 1,

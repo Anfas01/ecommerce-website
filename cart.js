@@ -1,22 +1,28 @@
 import { database } from "./database.js";
 import { render } from "./script.js";
 
+// Global cart state, initialized from localStorage to persist data across page reloads
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+// DOM element references for the shopping cart UI
 const cartsGridEl = document.querySelector(".carts-grid");
 const subtotalEl = document.querySelector(".subtotal");
 const cartCloseBtn = document.querySelector(".cart-close-btn");
 const cartCountEl = document.querySelector(".cart-item-count");
 
-
-
+/**
+ * Handles closing the cart sidebar by sliding it out of view.
+ */
 cartCloseBtn.addEventListener("click", () => {
   const carts = document.querySelector(".carts");
   carts.style.transform = "translateX(1000px)";
 });
 
 
-
+/**
+ * Iterates through the cart array and generates the HTML for the sidebar.
+ * If the cart is empty, it displays a placeholder message.
+ */
 export function generateCartHtml() {
   let html = "";
 
@@ -51,10 +57,13 @@ export function generateCartHtml() {
   }
 
   cartsGridEl.innerHTML = html;
+  // Re-attach listeners every time the HTML is re-generated
   attachCartListeners();
 }
 
-// Attach listeners to items inside the cart sidebar
+/**
+ * Attaches event listeners to the dynamic elements inside the cart (Remove, Plus, Minus buttons).
+ */
 function attachCartListeners() {
   document.querySelectorAll(".cart-remove").forEach((btn) => {
     btn.addEventListener("click", () => cartRemove(btn));
@@ -69,6 +78,10 @@ function attachCartListeners() {
   });
 }
 
+/**
+ * Removes an item from the cart based on the product ID.
+ * @param {HTMLElement} btn - The button element containing the data-id.
+ */
 function cartRemove(btn) {
   const id = Number(btn.dataset.id);
   cart = cart.filter((item) => item.productId !== id);
@@ -76,11 +89,17 @@ function cartRemove(btn) {
   render();
 }
 
+/**
+ * Increases or decreases the quantity of a specific cart item.
+ * @param {HTMLElement} btn - The button element containing the data-id.
+ * @param {string} operation - Either 'plus' or 'minus'.
+ */
 function cartQuantity(btn, operation) {
   const id = Number(btn.dataset.id);
   cart = cart.map((cartItem) => {
     if (cartItem.productId === id) {
       if (operation === "plus" && cartItem.quantity < 3) {
+        // Limits maximum quantity to 3 items
         cartItem.quantity++;
       } else if (operation === "minus" && cartItem.quantity > 1) {
         cartItem.quantity--;
@@ -92,6 +111,9 @@ function cartQuantity(btn, operation) {
   render();
 }
 
+/**
+ * Calculates the total cost of all items currently in the cart.
+ */
 export function subtotal() {
   let total = 0;
   cart.forEach((item) => {
@@ -105,6 +127,9 @@ export function subtotal() {
   }
 }
 
+/**
+ * Updates the numeric badge showing the total number of items in the cart.
+ */
 export function cartCount() {
   let count = 0;
   cart.forEach((item) => {

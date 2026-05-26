@@ -2,15 +2,24 @@ import { database } from "./database.js";
 import { cart, generateCartHtml, subtotal, cartCount } from "./cart.js";
 
 const gridContainer = document.querySelector(".grid-container");
+// Cart trigger button (header icon)
 const cartBtn = document.querySelector(".cart-btn");
 
+/**
+ * Opens the cart sidebar by resetting the transform property.
+ */
 cartBtn.addEventListener("click", () => {
   const carts = document.querySelector(".carts");
   carts.style.transform = "translateX(0)";
 });
 
+// Initial page load render
 render();
 
+/**
+ * Centralized render function that keeps the UI in sync with the current state.
+ * Called after any state change (adding/removing items, changing quantities).
+ */
 export function render() {
   generateHtml();
   generateCartHtml();
@@ -18,7 +27,10 @@ export function render() {
   cartCount();
 }
 
-// Attach listeners to product grid items
+/**
+ * Attaches listeners to product card actions.
+ * Currently handles the 'heart' icon which acts as a toggle to add/remove from cart.
+ */
 function attachProductListeners() {
   const heartBtn = document.querySelectorAll(".heart");
 
@@ -28,15 +40,16 @@ function attachProductListeners() {
       const isInCart = cart.some((item) => item.productId === id);
 
       if (!isInCart) {
-        // Add to cart if not present
+        // If not in cart, create a new cart entry with a unique ID
         const cartItem = {
+          // Simple logic to increment ID based on last item
           id: cart.length ? cart[cart.length - 1].id + 1 : 1,
           productId: id,
           quantity: 1,
         };
         cart.push(cartItem);
       } else {
-        // Remove from cart if already present
+        // If already in cart, remove it (toggle behavior)
         const index = cart.findIndex((item) => item.productId === id);
         if (index !== -1) {
           cart.splice(index, 1);
@@ -49,6 +62,10 @@ function attachProductListeners() {
   });
 }
 
+/**
+ * Loops through the product database and builds the HTML for the main grid.
+ * Dynamically sets the heart icon class based on whether the product is in the cart.
+ */
 function generateHtml() {
   let html = "";
 
@@ -57,7 +74,9 @@ function generateHtml() {
     const heartClass = isInCart ? "fa-solid" : "fa-regular";
     html += `
             <div class="content-container">
-                <img src="${product.image}" class="image">
+                <a href="product.html" id="${product.id}">
+                  <img src="${product.image}" class="image">
+                </a>  
                 <div class="info">
                     <p class="name">${product.name}</p>
                     <span>$${product.price}</span>
