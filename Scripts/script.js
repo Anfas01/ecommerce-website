@@ -74,7 +74,7 @@ function generateHtml() {
     const heartClass = isInCart ? "fa-solid" : "fa-regular";
     html += `
             <div class="content-container">
-                <a href="product.html" id="${product.id}">
+                <a href="product.html?id=${product.id}">
                   <img src="${product.image}" class="image">
                 </a>  
                 <div class="info">
