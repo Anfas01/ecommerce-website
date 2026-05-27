@@ -5,188 +5,219 @@
 export const database = [
   {
     id: 1,
-    name: "Classic Asymmetric Leather Biker Jacket",
-    price: 65.0,
-    image: "Images/anna-evans-jTC6ej2PkKs-unsplash.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(1).jfif",
+    type: "t-shirt"
   },
   {
     id: 2,
-    name: "Lee Storm Rider Blanket-Lined Denim Jacket",
-    price: 120.0,
-    image: "Images/caio-coelho-QRN47la37gw-unsplash.jpg",
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(2).jpg",
+    type: "t-shirt"
   },
   {
     id: 3,
-    name: "Vintage Multicolor Floral Windbreaker Jacket",
-    price: 45.0,
-    image: "Images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg",
+    name: "Yellow Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(3).jfif",
+    type: "t-shirt"
   },
   {
     id: 4,
-    name: "Classic White Crewneck T-Shir",
-    price: 15.0,
-    image: "Images/haryo-setyadi-acn5ERAeSb4-unsplash.jpg",
+    name: "Green Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(4).jfif",
+    type: "t-shirt"
   },
   {
     id: 5,
-    name: "Chunky Multicolor Panel Sneakers",
-    price: 55.0,
-    image: "Images/irene-kredenets-dwKiHoqqxk8-unsplash.jpg",
+    name: "Black Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(5).jfif",
+    type: "t-shirt"
   },
   {
     id: 6,
-    name: "Women's Tailored Black Pantsuit",
-    price: 55.0,
-    image: "Images/ivan-kazlouskij-zi5QQl26vaM-unsplash.jpg",
+    name: "White Pullover",
+    price: 19.99,
+    image: "Images/T-Shirt(6).jfif",
+    type: "t-shirt"
   },
   {
     id: 7,
-    name: "Classic Belted Black Trench Coat",
-    price: 85.0,
-    image: "Images/philipp-arlt-8EyB_RvaWtY-unsplash.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/Shirt(1).jfif",
+    type: "shirt"
   },
   {
     id: 8,
-    name: "Oversized Cream Puffer Jacket",
-    price: 70.0,
-    image: "Images/reynier-carl-87m1_NfKld4-unsplash.jpg",
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/Shirt(2).jfif",
+    type: "shirt"
   },
   {
     id: 9,
-    name: "Women's Oversized Grey Pantsuit",
-    price: 75.0,
-    image: "Images/reza-delkhosh-NTrI8tjgKo8-unsplash.jpg",
+    name: "Yellow Pullover",
+    price: 19.99,
+    image: "Images/Shirt(3).jfif",
+    type: "shirt"
   },
   {
     id: 10,
-    name: "Black Long Sleeve Graphic T-Shirt",
-    price: 25.0,
-    image: "Images/ryan-hoffman-A7f7XRKgUWc-unsplash.jpg",
+    name: "Green Pullover",
+    price: 19.99,
+    image: "Images/Shirt(4).jfif",
+    type: "shirt"
   },
   {
     id: 11,
-    name: "Men's Linen Mandarin Collar Shirt",
-    price: 35.0,
-    image: "Images/tian-dayong-S4f4apZd-hA-unsplash.jpg",
+    name: "Black Pullover",
+    price: 19.99,
+    image: "Images/Shirt(5).jfif",
+    type: "shirt"
   },
   {
     id: 12,
-    name: "Men's Linen Frog-Button Short Sleeve Shirt",
-    price: 38.0,
-    image: "Images/tian-dayong-SI7Hmk8MXQU-unsplash.jpg",
+    name: "White Pullover",
+    price: 19.99,
+    image: "Images/Shirt(6).jfif",
+    type: "shirt"
   },
   {
     id: 13,
-    name: "Classic Rose Gold Bomber Jacket",
-    price: 42.0,
-    image: "Images/tobias-tullius-Fg15LdqpWrs-unsplash.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/Shirt(7).jfif",
+    type: "shirt"
   },
   {
     id: 14,
-    name: "Women's Oversized Black Pantsuit with Lug Sole Loafers",
-    price: 95.0,
-    image: "Images/dmitry-ganin-EhWzbMPQcqQ-unsplash.jpg",
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/Pant(1).jfif",
+    type: "pant"
   },
   {
     id: 15,
-    name: "Monochrome Mustard Streetwear Set",
-    price: 350.00,
-    image: "images/diverse-cultural-fashion-portrait.jpg",
+    name: "Yellow Pullover",
+    price: 19.99,
+    image: "Images/Pant(2).jfif",
+    type: "pant"
   },
   {
     id: 16,
-    name: "Light Pink Double-Breasted Blazer & Midi Dress Set",
-    price: 298.00,
-    image: "images/fashion-portrait-young-elegant-woman (1).jpg",
+    name: "Green Pullover",
+    price: 19.99,
+    image: "Images/Pant(3).jfif",
+    type: "pant"
   },
   {
     id: 17,
-    name: "Off-White Denim Jacket & Grey Pleated Midi Skirt Set",
-    price: 185.00,
-    image: "images/young-pretty-woman-listening-music-wireless-earphones.jpg",
+    name: "Black Pullover",
+    price: 19.99,
+    image: "Images/Pant(4).jfif",
+    type: "pant"
   },
   {
     id: 18,
-    name: "Floral Print Satin Pleated Midi Dress in Rust Red",
-    price: 145.00,
-    image: "images/young-woman-beautiful-red-dress.jpg",
+    name: "White Pullover",
+    price: 19.99,
+    image: "Images/Pant(5).jfif",
+    type: "pant"
   },
   {
     id: 19,
-    name: "Blush Pink Double-Breasted Blazer & Culotte Set",
-    price: 220.00,
-    image: "images/fashion-portrait-young-elegant-woman.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/Pant(6).jfif",
+    type: "pant"
   },
   {
     id: 20,
-    name: "Classic Crewneck Cotton Sweatshirt in Burnt Orange",
-    price: 45.00,
-    image: "images/red-pullover-hanging.jpg",
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/Pant(7).jfif",
+    type: "pant"
   },
   {
     id: 21,
-    name: "Vintage 90s Colorblock Half-Zip Windbreaker",
-    price: 65.00,
-    image: "images/retro-style-jacket.jpg",
+    name: "Yellow Pullover",
+    price: 19.99,
+    image: "Images/Pant(8).jfif",
+    type: "pant"
   },
   {
     id: 22,
-    name: "Slim-Fit Textured Grey Blazer",
-    price: 120.00,
-    image: "images/gray-blazer-hanger-casual-men-s-fashion-wear (1).jpg",
+    name: "Green Pullover",
+    price: 19.99,
+    image: "Images/Hoodie(1).jfif",
+    type: "hoodie"
   },
   {
     id: 23,
-    name: "Oversized Ribbed Knit Cardigan in Taupe",
-    price: 75.00,
-    image: "images/spring-wardrobe-switch-still-life.jpg",
+    name: "Black Pullover",
+    price: 19.99,
+    image: "Images/Hoodie(2).jfif",
+    type: "hoodie"
   },
   {
     id: 24,
-    name: "Classic Oxford Button-Down Shirt in Heather Grey",
-    price: 55.00,
-    image: "images/still-life-with-classic-shirts-hanger.jpg",
+    name: "White Pullover",
+    price: 19.99,
+    image: "Images/Hoodie(3).jfif",
+    type: "hoodie"
   },
   {
     id: 25,
-    name: "Long-Sleeve Pleated Skater Dress in Emerald Green",
-    price: 68.0,
-    image: "images/still-life-spring-wardrobe-switch.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/Hoodie(4).jfif",
+    type: "hoodie"
   },
   {
     id: 26,
-    name: "Gingham Check Band Collar Blouse in Sage Green",
-    price: 48.0,
-    image: "images/shirt-hanger-with-green-background.jpg",
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/Jersey(1).jfif",
+    type: "jersey"
   },
   {
     id: 27,
-    name: "Long-Sleeve Linen Shirt in Indigo Blue",
-    price: 45.00,
-    image: "images/robert-richman-vcTKFYNZop4-unsplash.jpg",
+    name: "Yellow Pullover",
+    price: 19.99,
+    image: "Images/Jersey(2).jfif",
+    type: "jersey"
   },
   {
     id: 28,
-    name: "Barbour Chunky Knit Crewneck Sweater in Navy Blue",
-    price: 130.00,
-    image: "images/caio-coelho-NA9dtyWAFV4-unsplash.jpg",
+    name: "Green Pullover",
+    price: 19.99,
+    image: "Images/Jacket(1).jfif",
+    type: "jacket"
   },
   {
     id: 29,
-    name: "Vans Sk8-Hi Canvas High-Top Sneakers in Black/White",
-    price: 80.00,
-    image: "images/dan-edge-VZKl6bdFqmA-unsplash.jpg",
+    name: "Black Pullover",
+    price: 19.99,
+    image: "Images/Jacket(2).jfif",
+    type: "jacket"
   },
   {
     id: 30,
-    name: "Dickies Buffalo Check Flannel Shirt in Grey/Black",
-    price: 50.00,
-    image: "images/caio-coelho-xFmXLq_KJxg-unsplash.jpg",
+    name: "Red Pullover",
+    price: 19.99,
+    image: "Images/Cap(2).jfif",
+    type: "cap"
   },
   {
     id: 31,
-    name: "Sleeveless Linen Band Collar Shirt in Charcoal",
-    price: 42.00,
-    image: "images/tian-dayong-D1B0y5LPCvs-unsplash.jpg",
-  },
-];
+    name: "Blue Pullover",
+    price: 19.99,
+    image: "Images/Cap(3).jfif",
+    type: "cap"
+  }
+];  

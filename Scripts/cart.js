@@ -27,7 +27,7 @@ export function generateCartHtml() {
   let html = "";
 
   if (cart.length > 0) {
-    cart.forEach((item) => {
+    [...cart].reverse().forEach((item) => {
       const product = database.find((product) => product.id === item.productId);
       if (product) {
         html += `

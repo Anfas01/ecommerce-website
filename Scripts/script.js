@@ -7,6 +7,28 @@ const cartBtn = document.querySelector(".cart-btn");
 // Header element
 const header = document.querySelector("header");
 
+const alertContainer = document.querySelector(".alert-container");
+const alertItemImgEl = document.querySelector(".alert-item-img");
+const alertItemNameEl = document.querySelector(".alert-item-name");
+const alertItemPriceEl = document.querySelector(".alert-item-price");
+const alertItemQuantityEl = document.querySelector(".alert-item-quantity");
+const alertCloseBtn = document.querySelector(".alert-close-btn");
+const alertItemViewCartBtn = document.querySelector(".alert-item-view-cart-btn");
+
+let alertContainerTimeout;
+
+alertCloseBtn.addEventListener("click", () => {
+  alertContainer.classList.remove("alert-container-show");
+  clearTimeout(alertContainerTimeout);
+});
+
+alertItemViewCartBtn.addEventListener("click", () => {
+  const carts = document.querySelector(".carts");
+  carts.style.transform = "translateX(0)";
+  alertContainer.classList.remove("alert-container-show");
+  clearTimeout(alertContainerTimeout);
+});
+
 /**
  * Opens the cart sidebar by resetting the transform property.
  */
@@ -50,6 +72,13 @@ function attachProductListeners() {
           quantity: 1,
         };
         cart.push(cartItem);
+
+        const product = database.find((product) => product.id === id);
+        alert(product);
+
+
+
+
       } else {
         // If already in cart, remove it (toggle behavior)
         const index = cart.findIndex((item) => item.productId === id);
@@ -98,13 +127,35 @@ function generateHtml() {
 let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > lastScrollY) {
+  if (window.scrollY <= 0) {
+    header.classList.add("header-topped");
+  }
+  else if (window.scrollY > lastScrollY) {
     // Scrolling Down
+    header.classList.remove("header-topped");
     header.classList.add("header-hidden");
   } else {
     // Scrolling Up
+    header.classList.remove("header-topped");
     header.classList.remove("header-hidden");
   } 
   // Update the last scroll position
   lastScrollY = window.scrollY;
 });
+
+
+
+
+function alert(product){
+  if (product) {
+    clearTimeout(alertContainerTimeout);
+    alertContainer.classList.add("alert-container-show");
+    alertItemImgEl.src = product.image;
+    alertItemNameEl.textContent = product.name;
+    alertItemPriceEl.textContent = `$${product.price.toFixed(2)}`;
+    alertItemQuantityEl.textContent = "qty: 1";
+    alertContainerTimeout = setTimeout(() => {
+      alertContainer.classList.remove("alert-container-show");
+    }, 3000);
+  }
+};

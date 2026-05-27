@@ -2,13 +2,14 @@
 .carts {
   width: 600px;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   transform: translateX(100%);
   background-color: white;
   transition: transform 0.4s ease;
   border-left: 1px solid black;
+  z-index: 10;
 }
 
 /* Inner Grid for Cart Items (Scrollable) */

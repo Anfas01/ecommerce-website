@@ -22,58 +22,66 @@
     <h1>Welcome.</h1>
   </div>
 
-  <header class="header-hidden">
+  <header class="header-hidden main-header">
+    <ul>
+      <li><a href="">Shirt</a></li>
+      <li><a href="">T-Shirt</a></li>
+      <li><a href="">Pants</a></li>
+      <li><a href="">Hoodies</a></li>
+      <li><a href="">Shoes</a></li>
+      <li><a href="">Caps</a></li>
+    </ul>
     <!-- Cart trigger button showing current item count -->
     <div class="header-cart-container">
       <div class="cart-btn">
         Cart(<span class="cart-item-count"></span>)
       </div>
     </div>
+  </header>
 
-    <!-- Sliding Cart Sidebar: Hidden by default via CSS transforms -->
-    <div class="carts">
-      <div class="cart-header">
-        <i class="fa-solid fa-xmark cart-close-btn"></i>
-        <div class="cart-title">
-          <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
-        </div>
+  <!-- Sliding Cart Sidebar: Hidden by default via CSS transforms -->
+  <div class="carts">
+    <div class="cart-header">
+      <i class="fa-solid fa-xmark cart-close-btn"></i>
+      <div class="cart-title">
+        <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
       </div>
+    </div>
 
-      <!-- Target container for cart items injected by cart.js -->
-      <div class="carts-grid"></div>
+    <!-- Target container for cart items injected by cart.js -->
+    <div class="carts-grid"></div>
 
-      <!-- Summary and Checkout actions -->
-      <div class="cart-checkout">
-        <div class="subtotal-container">
-          <span>Subtotal</span>
-          <span class="subtotal"></span>
-        </div>
-        <button class="checkout-btn">Checkout</button>
+    <!-- Summary and Checkout actions -->
+    <div class="cart-checkout">
+      <div class="subtotal-container">
+        <span>Subtotal</span>
+        <span class="subtotal"></span>
       </div>
+      <button class="checkout-btn">Checkout</button>
+    </div>
 
-      <!-- Static recommendation section within the cart -->
-      <div class="cart-recommendation-container">
-        <span class="cart-recommendation-title">You might also like</span>
-        <div class="cart-recommendation-grid">
-          <div>
-            <img src="Images/caio-coelho-QRN47la37gw-unsplash.jpg" alt="">
-          </div>
-          <div>
-            <img src="Images/red-pullover-hanging.jpg" alt="">
-          </div>
-          <div>
-            <img src="Images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg" alt="">
-          </div>
+    <!-- Static recommendation section within the cart -->
+    <div class="cart-recommendation-container">
+      <span class="cart-recommendation-title">You might also like</span>
+      <div class="cart-recommendation-grid">
+        <div>
+          <img src="Images/Jersey(1).jfif" alt="">
+        </div>
+        <div>
+          <img src="Images/Hoodie(2).jfif" alt="">
+        </div>
+        <div>
+          <img src="Images/T-Shirt(2).jpg" alt="">
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- Main Product Grid: Target container for products injected by script.js -->
   <div class="grid-container"></div>
 
   <!-- Add to Cart Alert: Hidden by default via CSS transforms -->
-  <div class="alert-container">
+  <div class="alert-container ">
     <div class="alert-content">
       <div class="alert-header">
         <div class="alert-title">
@@ -83,17 +91,17 @@
         <i class="fa-solid fa-xmark alert-close-btn"></i>
       </div>
       <div class="alert-item-info">
-        <div class="alert-item-img-container">
-          <img class="alert-item-img" src="Images/caio-coelho-QRN47la37gw-unsplash.jpg">
-        </div>
+        <img class="alert-item-img" src="">
         <div class="alert-item-name-price-quantity">
-          <div class="alert-item-name">Product Name</div>
-          <div class="alert-item-price">$0.00</div>
-          <div class="alert-item-quantity">Quantity: 0</div>
+          <div class="alert-item-name"></div>
+          <div class="alert-item-price-quantity">
+            <div class="alert-item-price"></div>
+            <div class="alert-item-quantity"></div>
+          </div>
         </div>
       </div>
       <div class="alert-btns">
-        <button>View Cart</button>
+        <button class="alert-item-view-cart-btn">View Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
