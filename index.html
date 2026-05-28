@@ -2,110 +2,309 @@
 <html lang="en">
 
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Commerce</title>
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="Styles/style.css">
-  <link rel="stylesheet" href="Styles/cartstyle.css">
-  <!-- Application Logic (ES Module) -->
-  <script type="module" src="Scripts/script.js" defer></script>
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+
+  <!-- SEO -->
+  <title>E-Commerce Store</title>
+  <meta
+    name="description"
+    content="Modern e-commerce website with shopping cart functionality."
+  >
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/cartstyle.css">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  >
+
+  <!-- JavaScript -->
+  <script
+    type="module"
+    src="scripts/script.js"
+    defer
+  ></script>
 </head>
 
 <body>
-  <!-- Landing Section: Initial view when the user arrives -->
-  <div class="landing-page">
-    <h1>Welcome.</h1>
-  </div>
 
-  <header class="header-hidden main-header">
-    <ul>
-      <li><a href="">Shirt</a></li>
-      <li><a href="">T-Shirt</a></li>
-      <li><a href="">Pants</a></li>
-      <li><a href="">Hoodies</a></li>
-      <li><a href="">Shoes</a></li>
-      <li><a href="">Caps</a></li>
-    </ul>
-    <!-- Cart trigger button showing current item count -->
+  <!-- =========================
+       LANDING SECTION
+  ========================== -->
+  <section class="landing-page">
+    <h1>Welcome.</h1>
+  </section>
+
+  <!-- =========================
+       HEADER / NAVIGATION
+  ========================== -->
+  <header class="main-header header-hidden">
+
+    <nav class="navigation">
+      <ul class="navigation-list">
+
+        <li>
+          <a href="#all">All</a>
+        </li>
+
+        <li>
+          <a href="#shirts">Shirts</a>
+        </li>
+
+        <li>
+          <a href="#tshirts">T-Shirts</a>
+        </li>
+
+        <li>
+          <a href="#pants">Pants</a>
+        </li>
+
+        <li>
+          <a href="#hoodies">Hoodies</a>
+        </li>
+
+        <li>
+          <a href="#shoes">Shoes</a>
+        </li>
+
+        <li>
+          <a href="#caps">Caps</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Cart Button -->
     <div class="header-cart-container">
-      <div class="cart-btn">
-        Cart(<span class="cart-item-count"></span>)
-      </div>
+
+      <button
+        class="cart-btn"
+        aria-label="Open shopping cart"
+      >
+        Cart (<span class="cart-item-count">0</span>)
+      </button>
+
     </div>
+
   </header>
 
-  <!-- Sliding Cart Sidebar: Hidden by default via CSS transforms -->
-  <div class="carts">
+  <!-- =========================
+       CART SIDEBAR
+  ========================== -->
+  <aside
+    class="carts"
+  >
+
+    <!-- Cart Header -->
     <div class="cart-header">
-      <i class="fa-solid fa-xmark cart-close-btn"></i>
+
+      <button
+        class="cart-close-btn"
+        aria-label="Close shopping cart"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
       <div class="cart-title">
-        <h1>Cart<i class="fa-solid fa-cart-arrow-down"></i></h1>
+        <h2>
+          Cart
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </h2>
       </div>
+
     </div>
 
-    <!-- Target container for cart items injected by cart.js -->
+    <!-- Dynamic Cart Items -->
     <div class="carts-grid"></div>
 
-    <!-- Summary and Checkout actions -->
+    <!-- Checkout Section -->
     <div class="cart-checkout">
+
       <div class="subtotal-container">
         <span>Subtotal</span>
-        <span class="subtotal"></span>
+        <span class="subtotal">$0.00</span>
       </div>
-      <button class="checkout-btn">Checkout</button>
+
+      <button class="checkout-btn">
+        Checkout
+      </button>
+
     </div>
 
-    <!-- Static recommendation section within the cart -->
-    <div class="cart-recommendation-container">
-      <span class="cart-recommendation-title">You might also like</span>
+    <!-- Product Recommendations -->
+    <section class="cart-recommendation-container">
+
+      <h3 class="cart-recommendation-title">
+        You might also like
+      </h3>
+
       <div class="cart-recommendation-grid">
+
         <div>
-          <img src="Images/Jersey(1).jfif" alt="">
+          <img
+            src="images/Jersey(1).jfif"
+            alt="Sports jersey"
+          >
         </div>
+
         <div>
-          <img src="Images/Hoodie(2).jfif" alt="">
+          <img
+            src="images/Hoodie(2).jfif"
+            alt="Black hoodie"
+          >
         </div>
+
         <div>
-          <img src="Images/T-Shirt(2).jpg" alt="">
+          <img
+            src="images/T-Shirt(2).jpg"
+            alt="Casual t-shirt"
+          >
         </div>
+
       </div>
-    </div>
-  </div>
 
-  <!-- Main Product Grid: Target container for products injected by script.js -->
-  <div class="grid-container"></div>
+    </section>
 
-  <!-- Add to Cart Alert: Hidden by default via CSS transforms -->
-  <div class="alert-container ">
+  </aside>
+
+  <!-- =========================
+       MAIN PRODUCT SECTION
+  ========================== -->
+  <main class="grid-container">
+
+    <!-- Products injected dynamically via JavaScript -->
+
+  </main>
+
+  <!-- =========================
+       ADD TO CART ALERT
+  ========================== -->
+  <section
+    class="alert-container"
+  >
+
     <div class="alert-content">
+
+      <!-- Alert Header -->
       <div class="alert-header">
+
         <div class="alert-title">
-          <i style="color: green; font-size: 14px;" class="fa-solid fa-check"></i>
-          Item added to your cart
+
+          <i
+            class="fa-solid fa-check"
+            aria-hidden="true"
+          ></i>
+
+          <span>
+            Item added to your cart
+          </span>
+
         </div>
-        <i class="fa-solid fa-xmark alert-close-btn"></i>
+
+        <button
+          class="alert-close-btn"
+          aria-label="Close notification"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
       </div>
+
+      <!-- Product Info -->
       <div class="alert-item-info">
-        <img class="alert-item-img" src="">
+
+        <img
+          class="alert-item-img"
+          src=""
+          alt="Added product image"
+        >
+
         <div class="alert-item-name-price-quantity">
+
           <div class="alert-item-name"></div>
+
           <div class="alert-item-price-quantity">
+
             <div class="alert-item-price"></div>
+
             <div class="alert-item-quantity"></div>
+
           </div>
+
         </div>
+
       </div>
+
+      <!-- Alert Actions -->
       <div class="alert-btns">
-        <button class="alert-item-view-cart-btn">View Cart</button>
-        <button>Buy Now</button>
+
+        <button class="alert-item-view-cart-btn">
+          View Cart
+        </button>
+
+        <button class="buy-now-btn">
+          Buy Now
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->  
+
+  <footer class="site-footer">
+  <div class="footer-container">
+    
+    <div class="footer-section about">
+      <h2 class="footer-logo">E-Commerce Store</h2>
+      <p>Your one-stop shop for the latest trends. High quality, affordable prices, and fast shipping worldwide.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#all">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section categories">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#all">All Products</a></li>
+        <li><a href="http://127.0.0.1:5500/index.html#shirts">Shirts</a></li>
+        <li><a href="http://127.0.0.1:5500/index.html#tshirts">T-Shirts</a></li>
+        <li><a href="http://127.0.0.1:5500/index.html#pants">Pants</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Twitter">TW</a>
       </div>
     </div>
+
   </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 E-Commerce Store. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 

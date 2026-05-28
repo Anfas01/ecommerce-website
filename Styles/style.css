@@ -1,31 +1,47 @@
-/* External Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
-/* Global Reset: Ensures consistent sizing across browsers */
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base Body Styles */
+/* =========================
+   BASE STYLES
+========================= */
 body {
-  background-color: white;
   font-family: "Rubik", sans-serif;
+  background-color: #fff;
+  color: #000;
 }
 
-/* Fixed Navigation Header */
-header {
-  background-color: rgba(255, 255, 255, 0.7);
-  height: 60px;
+/* =========================
+   HEADER
+========================= */
+.main-header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1;
+  width: 100%;
+  height: 60px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 0 50px;
+
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+
+  z-index: 1;
+
   transition: transform 0.3s ease-in-out;
 }
 
@@ -33,54 +49,70 @@ header {
   transform: translateY(-100%);
 }
 
-/* The corrected way */
 .header-topped {
   background-color: transparent;
 }
 
-.header-topped ul li a {
-  color: white;
-}
-
+.header-topped .navigation-list a,
 .header-topped .cart-btn {
-  color: white;
+  color: #ffffff;
 }
 
-header ul {
-  list-style: none;
+/* =========================
+   NAVIGATION
+========================= */
+.navigation {
+  width: 60%;
+}
+
+.navigation-list {
   display: flex;
-  width: 50%;
-  margin-right: 50px;
-  margin-left: 50px;
-  gap: 20px;
-  font-size: 18px;
   justify-content: space-between;
-  background-color: transparent;
+  align-items: center;
+
+  list-style: none;
 }
 
-header ul li a {
+.navigation-list a {
   text-decoration: none;
-  color: black;
+  color: #000;
+  font-size: 18px;
+  transition: color 0.3s ease;
 }
 
-/* Cart trigger button in the header */
+.navigation-list a:hover {
+  color: gray;
+}
+
+/* =========================
+   CART BUTTON
+========================= */
 .cart-btn {
-  font-size: 20px;
-  color: rgb(0, 0, 0,);
-  margin-right: 50px;
+  background: transparent;
+  border: none;
+
+  font-size: 18px;
   cursor: pointer;
-  transition: all 0.4s ease;
+
+  transition: opacity 0.3s ease;
 }
 
-/* Full-screen Welcome/Hero Section */
+.cart-btn:hover {
+  opacity: 0.7;
+}
+
+/* =========================
+   LANDING PAGE
+========================= */
 .landing-page {
   height: 100vh;
-  background-color: black;
-  color: white;
-  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: #000;
+  color: #fff;
 }
 
 .landing-page h1 {
@@ -88,151 +120,166 @@ header ul li a {
   font-weight: 600;
 }
 
-/* Main Catalog Grid Layout */
+/* =========================
+   PRODUCT GRID
+========================= */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 350px);
-  grid-column-gap: 20px;
-  grid-row-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 40px;
+
   margin-top: 80px;
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: transparent;
-  justify-content: space-between;
   padding: 20px;
 }
 
-/* Individual Product Card Wrapper */
+/* =========================
+   PRODUCT CARD
+========================= */
 .content-container {
-  background-color: transparent;
   display: flex;
-  width: 100%;
   flex-direction: column;
 }
 
-/* Product Thumbnail Styling */
 .image {
-  width: 350px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
   cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-
-/* Product Name and Price Row */
+/* =========================
+   PRODUCT INFO
+========================= */
 .info {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  margin-bottom: 10px;
-  justify-content: space-between;
+
+  margin: 10px 0;
 }
 
-/* Container for Buy Button and Wishlist Heart */
+.info span {
+  font-size: 18px;
+}
+
+/* =========================
+   PRODUCT ACTIONS
+========================= */
 .action {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
-/* Wishlist/Cart Toggle Icon */
+/* =========================
+   HEART ICON
+========================= */
 .heart {
-  font-size: 25px;
+  font-size: 24px;
   color: red;
+
   cursor: pointer;
-  transition: all 0.4s ease;
+
+  transition: transform 0.3s ease;
 }
 
 .heart:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* Main Action Button for Products */
-.buy-btn {
-  padding: 6px 40px;
-  background-color: transparent;
-  border: 2px solid black;
-  color: black;
-  font-size: 15px;
+/* =========================
+   BUTTONS
+========================= */
+.buy-btn,
+.alert-btns button {
+  padding: 10px;
+  border: 2px solid #000;
+
+  background: transparent;
+  color: #000;
+
   cursor: pointer;
-  transition: all 0.2s ease;
+
+  transition: all 0.3s ease;
 }
 
-.buy-btn:hover {
-  background-color: black;
-  color: white;
+.buy-btn:hover,
+.alert-btns button:hover {
+  background-color: #000;
+  color: #fff;
 }
 
-/* Alert Container */
+/* =========================
+   ALERT NOTIFICATION
+========================= */
 .alert-container {
   position: fixed;
   bottom: 20px;
-  right: 40px;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(243, 240, 240);
+  right: 20px;
+
   width: 300px;
-  height: 300px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  justify-content: space-between;
-  padding: 10px;
-  padding-top: 20px;
+  padding: 20px;
+
+  background-color: #f3f0f0;
+  border: 1px solid #000;
+  border-radius: 6px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
   transform: translateX(150%);
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease;
+
+  z-index: 2000;
 }
 
 .alert-container-show {
   transform: translateX(0);
 }
 
-
 .alert-content {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
+  gap: 20px;
 }
 
+/* =========================
+   ALERT HEADER
+========================= */
 .alert-header {
-  width: 100%;
-  height: 40px;
-  position: relative;
-  align-items: center;
   display: flex;
-  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.alert-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
 .alert-close-btn {
-  position: absolute;
-  top: -10px;
-  right: -5px;
-  cursor: pointer;
-  transition: all 0.4s ease;
+  background: transparent;
+  border: none;
+
   font-size: 20px;
-  background-color: transparent;
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
 }
 
 .alert-close-btn:hover {
   transform: rotate(90deg);
 }
 
+/* =========================
+   ALERT PRODUCT INFO
+========================= */
 .alert-item-info {
   display: flex;
-  width: 100%;
-  padding: 10px;
-  padding-left: 0;
-  background-color: transparent;
-}
-
-.alert-item-img-container {
-  width: 150px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
-  background-color: transparent;
+  gap: 15px;
 }
 
 .alert-item-img {
@@ -242,46 +289,128 @@ header ul li a {
 .alert-item-name-price-quantity {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding-left: 10px;
   justify-content: space-between;
-  background-color: transparent;
 }
 
-.alert-item-name {
-  margin-bottom: 10px;
-  background-color: transparent;
-  font-size: 16px;
-}
-
+.alert-item-name,
 .alert-item-price {
-  margin-bottom: 5px;
-  background-color: transparent;
   font-size: 16px;
 }
 
+/* =========================
+   ALERT BUTTONS
+========================= */
 .alert-btns {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  gap: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Base Footer Styles */
+.site-footer {
+  background-color: #111; /* Dark background to contrast light themes */
+  color: #ccc;
+  padding: 40px 20px 20px 20px;
+  font-family: sans-serif;
+  margin-top: 200px; /* Pushes footer away from content above */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 30px;
   justify-content: space-between;
-  background-color: transparent;
 }
 
-.alert-btns button {
-  padding: 6px 0;
-  background-color: transparent;
-  border: 2px solid black;
-  color: black;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* Individual Section Layouts */
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* Prevents columns from becoming too narrow */
+}
+
+.footer-section h3, 
+.footer-logo {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Links Formatting */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
   margin-bottom: 10px;
-  transition: all 0.3s ease;
 }
 
-.alert-btns button:hover {
-  background-color: black;
-  color: white;
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #fff; /* Highlights on hover */
+}
+
+/* Social Media Icons Box */
+.social-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.social-icons a:hover {
+  background-color: #555;
+}
+
+/* Copyright Bar at the very bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  font-size: 13px;
+}
+
+/* Responsive adjustments for Mobile Views */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stacks sections vertically on mobile */
+    gap: 25px;
+  }
+  
+  .footer-section {
+    min-width: 100%;
+  }
 }

@@ -39,7 +39,7 @@ export function generateCartHtml() {
                       <span>$${product.price.toFixed(2)}</span>
                       </div>
                       <div class="cart-action">
-                      <span class="cart-quantity">
+                      <span class="cart-quantity">Qty:<br>
                           <i class="fa-solid fa-minus quantity-minus-btn" data-id="${product.id}"></i>
                           <span class="quantity">${item.quantity}</span>
                           <i class="fa-solid fa-plus quantity-plus-btn" data-id="${product.id}"></i>
