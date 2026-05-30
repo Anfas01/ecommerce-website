@@ -43,6 +43,7 @@ categoryHeaderEl.forEach((categoryHeader) => {
   categoryHeader.addEventListener("click", () => {
     document.querySelector(".navigation-list-category-header-active").classList.remove("navigation-list-category-header-active");
     categoryHeader.classList.add("navigation-list-category-header-active");
+    render();
   });
 });
 
@@ -58,6 +59,7 @@ export function render() {
   generateCartHtml();
   subtotal();
   cartCount();
+  generateCartHtml();
 }
 
 /**
@@ -109,24 +111,10 @@ function attachProductListeners() {
 function generateHtml() {
   let html = "";
 
+  const categoryType = document.querySelector(".navigation-list-category-header-active").textContent;
+
   database.forEach((product) => {
-    const isInCart = cart.some((item) => item.productId === product.id);
-    const heartClass = isInCart ? "fa-solid" : "fa-regular";
-    html += `
-            <div class="content-container">
-                <a href="product.html?id=${product.id}">
-                  <img src="${product.image}" class="image">
-                </a>  
-                <div class="info">
-                    <p class="name">${product.name}</p>
-                    <span>$${product.price}</span>
-                </div>
-                <div class="action">
-                    <button class="buy-btn">Buy</button>
-                    <i class="${heartClass} fa-heart heart" data-id="${product.id}"></i>
-                </div>
-            </div>
-        `;
+    html += generateCategoryHtml(product, categoryType);
   });
   gridContainer.innerHTML = html;
   attachProductListeners();
@@ -168,3 +156,43 @@ function alert(product){
     }, 3000);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Generates the HTML for a single product card if it matches the current category.
+ */
+function generateCategoryHtml(product, categoryType) {
+  const activeCategory = categoryType.toLowerCase();
+  if (activeCategory === "all" || product.type === activeCategory) {
+    const isInCart = cart.some((item) => item.productId === product.id);
+    const heartClass = isInCart ? "fa-solid" : "fa-regular";
+    return `
+            <div class="content-container">
+                <a href="product.html?id=${product.id}">
+                  <img src="${product.image}" class="image">
+                </a>  
+                <div class="info">
+                    <p class="name">${product.name}</p>
+                    <span>$${product.price.toFixed(2)}</span>
+                </div>
+                <div class="action">
+                    <button class="buy-btn">Buy</button>
+                    <i class="${heartClass} fa-heart heart" data-id="${product.id}"></i>
+                </div>
+            </div>
+        `;
+  }
+  return "";
+}
