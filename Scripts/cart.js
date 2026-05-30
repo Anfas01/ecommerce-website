@@ -96,19 +96,41 @@ function cartRemove(btn) {
  */
 function cartQuantity(btn, operation) {
   const id = Number(btn.dataset.id);
+  let itemChanged = false; // Track if a change actually occurred
+
   cart = cart.map((cartItem) => {
     if (cartItem.productId === id) {
       if (operation === "plus" && cartItem.quantity < 3) {
-        // Limits maximum quantity to 3 items
         cartItem.quantity++;
+        itemChanged = true;
       } else if (operation === "minus" && cartItem.quantity > 1) {
         cartItem.quantity--;
+        itemChanged = true;
       }
     }
     return cartItem;
   });
+
   localStorage.setItem("cart", JSON.stringify(cart));
-  render();
+  
+  // 1. Re-render the HTML first so the new quantity exists in the DOM
+  render(); 
+
+  // 2. If an item changed, find THAT SPECIFIC element and animate it
+  if (itemChanged) {
+    // Find the container container that matches our product ID
+    const activeMinusBtn = document.querySelector(`.quantity-minus-btn[data-id="${id}"]`);
+    if (activeMinusBtn) {
+      // Find the adjacent .quantity span right next to the clicked button
+      const quantitySpan = activeMinusBtn.nextElementSibling; 
+      
+      if (quantitySpan) {
+        quantitySpan.classList.remove("slide-up-animation");
+        void quantitySpan.offsetWidth; // Force a CSS reset
+        quantitySpan.classList.add("slide-up-animation");
+      }
+    }
+  }
 }
 
 /**
@@ -123,7 +145,12 @@ export function subtotal() {
     }
   });
   if (subtotalEl) {
-    subtotalEl.innerHTML = `$${total.toFixed(2)}`;
+    if (subtotalEl.innerHTML !== `$${total.toFixed(2)}`){
+      subtotalEl.classList.remove("slide-up-animation");
+      void subtotalEl.offsetWidth;
+      subtotalEl.innerHTML = `$${total.toFixed(2)}`;
+      subtotalEl.classList.add("slide-up-animation");
+    };
   }
 }
 
@@ -136,6 +163,9 @@ export function cartCount() {
     count += item.quantity;
   });
   if (cartCountEl) {
+    cartCountEl.classList.remove("slide-up-animation");
+    void cartCountEl.offsetWidth;
     cartCountEl.textContent = count;
+    cartCountEl.classList.add("slide-up-animation");
   }
 }

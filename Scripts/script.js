@@ -14,6 +14,7 @@ const alertItemPriceEl = document.querySelector(".alert-item-price");
 const alertItemQuantityEl = document.querySelector(".alert-item-quantity");
 const alertCloseBtn = document.querySelector(".alert-close-btn");
 const alertItemViewCartBtn = document.querySelector(".alert-item-view-cart-btn");
+const categoryHeaderEl = document.querySelectorAll(".navigation-list-category-header");
 
 let alertContainerTimeout;
 
@@ -35,6 +36,14 @@ alertItemViewCartBtn.addEventListener("click", () => {
 cartBtn.addEventListener("click", () => {
   const carts = document.querySelector(".carts");
   carts.style.transform = "translateX(0)";
+});
+
+
+categoryHeaderEl.forEach((categoryHeader) => {
+  categoryHeader.addEventListener("click", () => {
+    document.querySelector(".navigation-list-category-header-active").classList.remove("navigation-list-category-header-active");
+    categoryHeader.classList.add("navigation-list-category-header-active");
+  });
 });
 
 // Initial page load render

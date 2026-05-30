@@ -10,6 +10,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
 
 /* =========================
@@ -49,6 +51,10 @@ body {
   transform: translateY(-100%);
 }
 
+/* =========================
+   HEADER TOPPED
+========================= */
+
 .header-topped {
   background-color: transparent;
 }
@@ -58,31 +64,53 @@ body {
   color: #ffffff;
 }
 
+.header-topped .navigation-list-category-header::after {
+  background-color: #ffffff;
+}
+
 /* =========================
    NAVIGATION
 ========================= */
 .navigation {
-  width: 60%;
+  width: 50%;
 }
 
 .navigation-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  list-style: none;
 }
 
 .navigation-list a {
-  text-decoration: none;
   color: #000;
   font-size: 18px;
   transition: color 0.3s ease;
 }
 
-.navigation-list a:hover {
-  color: gray;
+.navigation-list-category-header {
+  position: relative;
 }
+
+/* 1. Define the initial state of the underline */
+.navigation-list-category-header::after {
+  content: "";
+  display: block;
+  width: 0; /* Start at zero width */
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  /* Apply the transition directly to the pseudo-element */
+  transition: width 1s ease; 
+}
+
+/* 2. Define the hover state */
+.navigation-list-category-header:hover::after {
+  width: 50%; /* Animate to full width on hover */
+}
+
+.navigation-list-category-header-active::after {
+  width: 100%;
+}
+
 
 /* =========================
    CART BUTTON
@@ -99,6 +127,29 @@ body {
 
 .cart-btn:hover {
   opacity: 0.7;
+}
+
+
+.cart-item-count {
+  display: inline-block;
+  overflow: hidden;    /* Prevents the number from being seen when it's pushed down */
+  vertical-align: bottom; 
+}
+
+/* This class triggers the slide up from the bottom */
+.slide-up-animation {
+  animation: slideUpFromBottom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%); /* Start completely below the container */
+    opacity: 0;                  /* Optional: fade it in slightly */
+  }
+  100% {
+    transform: translateY(0);    /* End at normal position */
+    opacity: 1;
+  }
 }
 
 /* =========================
