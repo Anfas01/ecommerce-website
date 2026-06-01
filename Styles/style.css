@@ -1,11 +1,9 @@
-/* =========================
-   GOOGLE FONT
-========================= */
+/* ==========================================================================
+   1. IMPORTS & GLOBAL RESET
+   ========================================================================== */
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
-/* =========================
-   GLOBAL RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,36 +12,29 @@
   list-style: none;
 }
 
-/* =========================
-   BASE STYLES
-========================= */
 body {
   font-family: "Rubik", sans-serif;
   background-color: #fff;
   color: #000;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ==========================================================================
+   2. HEADER LAYOUT
+   ========================================================================== */
+
 .main-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0 50px;
-
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-
   z-index: 1;
-
   transition: transform 0.3s ease-in-out;
 }
 
@@ -51,10 +42,7 @@ body {
   transform: translateY(-100%);
 }
 
-/* =========================
-   HEADER TOPPED
-========================= */
-
+/* Header Transformed (At Top of Page) */
 .header-topped {
   background-color: transparent;
 }
@@ -68,9 +56,10 @@ body {
   background-color: #ffffff;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* ==========================================================================
+   3. NAVIGATION MENU
+   ========================================================================== */
+
 .navigation {
   width: 50%;
 }
@@ -92,77 +81,33 @@ body {
   position: relative;
 }
 
-/* 1. Define the initial state of the underline */
+/* Underline Animation Effect */
 .navigation-list-category-header::after {
   content: "";
   display: block;
-  width: 0; /* Start at zero width */
+  width: 0;
   height: 2px;
   background-color: rgb(0, 0, 0);
-  /* Apply the transition directly to the pseudo-element */
   transition: width 1s ease; 
 }
 
-/* 2. Define the hover state */
 .navigation-list-category-header:hover::after {
-  width: 50%; /* Animate to full width on hover */
+  width: 50%;
 }
 
 .navigation-list-category-header-active::after {
   width: 100%;
 }
 
+/* ==========================================================================
+   4. LANDING HERO SECTION
+   ========================================================================== */
 
-/* =========================
-   CART BUTTON
-========================= */
-.cart-btn {
-  background: transparent;
-  border: none;
-
-  font-size: 18px;
-  cursor: pointer;
-
-  transition: opacity 0.3s ease;
-}
-
-.cart-btn:hover {
-  opacity: 0.7;
-}
-
-
-.cart-item-count {
-  display: inline-block;
-  overflow: hidden;    /* Prevents the number from being seen when it's pushed down */
-  vertical-align: bottom; 
-}
-
-/* This class triggers the slide up from the bottom */
-.slide-up-animation {
-  animation: slideUpFromBottom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes slideUpFromBottom {
-  0% {
-    transform: translateY(100%); /* Start completely below the container */
-    opacity: 0;                  /* Optional: fade it in slightly */
-  }
-  100% {
-    transform: translateY(0);    /* End at normal position */
-    opacity: 1;
-  }
-}
-
-/* =========================
-   LANDING PAGE
-========================= */
 .landing-page {
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: #000;
   color: #fff;
 }
@@ -172,22 +117,18 @@ body {
   font-weight: 600;
 }
 
-/* =========================
-   PRODUCT GRID
-========================= */
+/* ==========================================================================
+   5. PRODUCT GRID & CARDS
+   ========================================================================== */
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
   gap: 40px;
-
   margin-top: 80px;
   padding: 20px;
 }
 
-/* =========================
-   PRODUCT CARD
-========================= */
 .content-container {
   display: flex;
   flex-direction: column;
@@ -196,17 +137,12 @@ body {
 .image {
   width: 100%;
   cursor: pointer;
-
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================
-   PRODUCT INFO
-========================= */
 .info {
   display: flex;
   justify-content: space-between;
-
   margin: 10px 0;
 }
 
@@ -214,44 +150,26 @@ body {
   font-size: 18px;
 }
 
-/* =========================
-   PRODUCT ACTIONS
-========================= */
 .action {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 10px;
   align-items: center;
+  width: 100%;
 }
 
-/* =========================
-   HEART ICON
-========================= */
-.heart {
-  font-size: 24px;
-  color: red;
+/* ==========================================================================
+   6. BUTTONS & INTERACTIVE ELEMENTS
+   ========================================================================== */
 
-  cursor: pointer;
-
-  transition: transform 0.3s ease;
-}
-
-.heart:hover {
-  transform: scale(1.1);
-}
-
-/* =========================
-   BUTTONS
-========================= */
 .buy-btn,
 .alert-btns button {
   padding: 10px;
   border: 2px solid #000;
-
   background: transparent;
   color: #000;
-
   cursor: pointer;
-
   transition: all 0.3s ease;
 }
 
@@ -261,26 +179,63 @@ body {
   color: #fff;
 }
 
-/* =========================
-   ALERT NOTIFICATION
-========================= */
+.buy-btn {
+  width: 100%;
+  border-radius: 50px;
+}
+
+.add-to-cart-btn {
+  padding: 10px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.add-to-cart-btn:hover,
+.add-to-cart-btn.added {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Cart Button & Badge Counters */
+.cart-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.cart-btn:hover {
+  opacity: 0.7;
+}
+
+.cart-item-count {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom; 
+}
+
+/* ==========================================================================
+   7. ALERTS & NOTIFICATIONS
+   ========================================================================== */
+
 .alert-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-
   width: 300px;
   padding: 20px;
-
   background-color: #f3f0f0;
   border: 1px solid #000;
   border-radius: 6px;
-
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
   transform: translateX(150%);
   transition: transform 0.4s ease;
-
   z-index: 2000;
 }
 
@@ -294,9 +249,6 @@ body {
   gap: 20px;
 }
 
-/* =========================
-   ALERT HEADER
-========================= */
 .alert-header {
   display: flex;
   justify-content: space-between;
@@ -309,16 +261,11 @@ body {
   gap: 8px;
 }
 
-/* =========================
-   CLOSE BUTTON
-========================= */
 .alert-close-btn {
   background: transparent;
   border: none;
-
   font-size: 20px;
   cursor: pointer;
-
   transition: transform 0.3s ease;
 }
 
@@ -326,9 +273,6 @@ body {
   transform: rotate(90deg);
 }
 
-/* =========================
-   ALERT PRODUCT INFO
-========================= */
 .alert-item-info {
   display: flex;
   gap: 15px;
@@ -349,46 +293,36 @@ body {
   font-size: 16px;
 }
 
-/* =========================
-   ALERT BUTTONS
-========================= */
 .alert-btns {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
 
-
-
-
-
-
-
-
-
-/* Base Footer Styles */
 .site-footer {
-  background-color: #111; /* Dark background to contrast light themes */
+  background-color: #111;
   color: #ccc;
   padding: 40px 20px 20px 20px;
   font-family: sans-serif;
-  margin-top: 200px; /* Pushes footer away from content above */
+  margin-top: 200px;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
 }
 
-/* Individual Section Layouts */
 .footer-section {
   flex: 1;
-  min-width: 200px; /* Prevents columns from becoming too narrow */
+  min-width: 200px;
 }
 
 .footer-section h3, 
@@ -403,9 +337,7 @@ body {
   font-size: 14px;
 }
 
-/* Links Formatting */
 .footer-section ul {
-  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -416,16 +348,15 @@ body {
 
 .footer-section ul li a {
   color: #ccc;
-  text-decoration: none;
   font-size: 14px;
   transition: color 0.2s ease;
 }
 
 .footer-section ul li a:hover {
-  color: #fff; /* Highlights on hover */
+  color: #fff;
 }
 
-/* Social Media Icons Box */
+/* Social Media Badges */
 .social-icons a {
   display: inline-block;
   width: 35px;
@@ -436,7 +367,6 @@ body {
   line-height: 35px;
   margin-right: 10px;
   border-radius: 50%;
-  text-decoration: none;
   font-size: 12px;
   font-weight: bold;
   transition: background 0.2s ease;
@@ -446,7 +376,6 @@ body {
   background-color: #555;
 }
 
-/* Copyright Bar at the very bottom */
 .footer-bottom {
   text-align: center;
   margin-top: 40px;
@@ -455,10 +384,28 @@ body {
   font-size: 13px;
 }
 
-/* Responsive adjustments for Mobile Views */
+/* ==========================================================================
+   9. ANIMATIONS & RESPONSIVE QUERIES
+   ========================================================================== */
+
+.slide-up-animation {
+  animation: slideUpFromBottom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column; /* Stacks sections vertically on mobile */
+    flex-direction: column;
     gap: 25px;
   }
   
