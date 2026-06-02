@@ -39,18 +39,24 @@ const openCartSidebar = () => {
 // ==========================================
 
 // Cart Visibility Triggers
-cartBtn.addEventListener("click", openCartSidebar);
+if (cartBtn) {
+  cartBtn.addEventListener("click", openCartSidebar);
+}
 
-alertItemViewCartBtn.addEventListener("click", () => {
-  openCartSidebar();
-  alertContainer.classList.remove("alert-container-show");
-  clearTimeout(alertContainerTimeout);
-});
+if (alertItemViewCartBtn) {
+  alertItemViewCartBtn.addEventListener("click", () => {
+    openCartSidebar();
+    alertContainer.classList.remove("alert-container-show");
+    clearTimeout(alertContainerTimeout);
+  });
+}
 
-alertCloseBtn.addEventListener("click", () => {
-  alertContainer.classList.remove("alert-container-show");
-  clearTimeout(alertContainerTimeout);
-});
+if (alertCloseBtn) {
+  alertCloseBtn.addEventListener("click", () => {
+    alertContainer.classList.remove("alert-container-show");
+    clearTimeout(alertContainerTimeout);
+  });
+}
 
 // Category Filter Switcher
 categoryHeaderEl.forEach((categoryHeader) => {
@@ -64,6 +70,8 @@ categoryHeaderEl.forEach((categoryHeader) => {
 
 // Sticky Header Scroll Handler
 window.addEventListener("scroll", () => {
+  if (!header) return;
+
   if (window.scrollY <= 0) {
     header.classList.add("header-topped");
   } else if (window.scrollY > lastScrollY) {
@@ -77,6 +85,9 @@ window.addEventListener("scroll", () => {
   }
   lastScrollY = window.scrollY;
 });
+
+// Listen for data changes in cart.js to trigger a UI refresh
+document.addEventListener("cartChanged", render);
 
 // ==========================================
 // CORE APP ENGINE (LIFECYCLE)
@@ -104,7 +115,12 @@ render();
  */
 function generateHtml() {
   let html = "";
-  const categoryType = document.querySelector(".navigation-list-category-header-active").textContent;
+  const activeCategoryEl = document.querySelector(".navigation-list-category-header-active");
+
+  // Safety check: if we aren't on the main shop page (no grid or active category), exit early
+  if (!gridContainer || !activeCategoryEl) return;
+
+  const categoryType = activeCategoryEl.textContent;
 
   database.forEach((product) => {
     html += generateCategoryHtml(product, categoryType);
@@ -136,7 +152,7 @@ function generateCategoryHtml(product, categoryType) {
           <span>$${product.price.toFixed(2)}</span>
         </div>
         <div class="action">
-          <button class="buy-btn">Buy</button>
+          <a class="buy-btn" href="productCheckout.html?id=${product.id}">Buy</a>
           <button class="add-to-cart-btn ${addedClass}" data-id="${product.id}">
             ${btnText} ${icon}
           </button>

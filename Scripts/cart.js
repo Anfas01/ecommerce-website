@@ -1,5 +1,4 @@
 import { database } from "./database.js";
-import { render } from "./script.js";
 
 // ==========================================
 // STATE & APP VARIABLES
@@ -16,12 +15,14 @@ const cartCountEl = document.querySelector(".cart-item-count");
 // ==========================================
 // EVENT LISTENERS
 // ==========================================
-cartCloseBtn.addEventListener("click", () => {
-  const carts = document.querySelector(".carts");
-  if (carts) {
-    carts.style.transform = "translateX(1000px)";
-  }
-});
+if (cartCloseBtn) {
+  cartCloseBtn.addEventListener("click", () => {
+    const carts = document.querySelector(".carts");
+    if (carts) {
+      carts.style.transform = "translateX(1000px)";
+    }
+  });
+}
 
 // ==========================================
 // EVENT HANDLERS & INTERNAL FUNCTIONS
@@ -52,7 +53,7 @@ function cartRemove(btn) {
   const id = Number(btn.dataset.id);
   cart = cart.filter((item) => item.productId !== id);
   localStorage.setItem("cart", JSON.stringify(cart));
-  render();
+  document.dispatchEvent(new Event("cartChanged"));
 }
 
 /**
@@ -79,8 +80,8 @@ function cartQuantity(btn, operation) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   
-  // 1. Re-render the HTML first so the new quantity exists in the DOM
-  render(); 
+  // 1. Notify the app to re-render the UI
+  document.dispatchEvent(new Event("cartChanged"));
 
   // 2. If an item changed, find THAT SPECIFIC element and animate it
   if (itemChanged) {
@@ -106,6 +107,8 @@ function cartQuantity(btn, operation) {
  */
 export function generateCartHtml() {
   let html = "";
+
+  if (!cartsGridEl) return;
 
   if (cart.length > 0) {
     // Render from newest added to oldest
