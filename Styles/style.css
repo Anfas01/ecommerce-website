@@ -146,8 +146,8 @@ body {
   margin: 10px 0;
 }
 
-.info span {
-  font-size: 18px;
+.name {
+  margin-right: 10px;
 }
 
 .action {
@@ -182,6 +182,7 @@ body {
 .buy-btn {
   width: 100%;
   border-radius: 50px;
+  font-size: 16px;
 }
 
 .add-to-cart-btn {
@@ -193,6 +194,7 @@ body {
   transition: all 0.3s ease;
   width: 100%;
   border-radius: 50px;
+  font-size: 16px;
 }
 
 .add-to-cart-btn:hover,

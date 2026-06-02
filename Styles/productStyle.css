@@ -32,23 +32,129 @@ body {
   color: white;
 }
 
-.product-container {
-  background-color: rgb(255, 255, 255);
-  height: 100vh;
+
+.main {
   display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
 }
 
-.product-image {
-  background-color: rgb(255, 255, 255);
+.images {
+  width: 60%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+}
+
+.images img {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  object-fit: contain;
+  object-position: center;
 }
 
-.product-image img {
-  width: 100%;
-  object-fit: cover;
-  max-width: 600px;
+
+
+
+
+
+
+
+
+
+
+
+.details {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 10%;
+  background-color: white;
+  padding-left: 20px;
+  padding-top: 150px;
+}
+
+.product-name {
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.product-price {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.buy-now-btn {
+  padding: 10px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+  padding: 10px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.buy-now-btn:hover,
+.add-to-cart-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.product-description {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-features {
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-features-title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.product-features-title i {
+  transform: translateY(1.5px)
+}
+
+.product-features-list {
+  display: none;
+}
+
+.product-features-list-active {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
 }
