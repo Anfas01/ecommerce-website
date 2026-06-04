@@ -1,0 +1,287 @@
+/* --- Global Overrides & Resets --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Container Page Layout Layout --- */
+.checkout-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left Side Column Styling */
+.form-column {
+  width: 55%;
+  padding: 50px 60px;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e5e5;
+}
+
+/* Right Side Column Styling */
+.summary-column {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding: 50px 60px;
+  background-color: #fafafa;
+}
+
+/* Fixes right column so it follows along as you fill out the left form */
+@media (min-width: 769px) {
+  .summary-column {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+}
+
+/* --- Product List Box & Custom Scrollbar --- */
+.cart-scroll-area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: calc(100vh - 220px); /* Keeps scrolling optimized inside screen */
+  overflow-y: auto;
+  margin-bottom: 24px;
+  padding-right: 8px;
+}
+
+.cart-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+.cart-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cart-scroll-area::-webkit-scrollbar-thumb {
+  background: #dadada;
+  border-radius: 4px;
+}
+.cart-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #c1c1c1;
+}
+
+/* --- Individual Cart Product Card --- */
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.item-thumbnail {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  background-color: #f3f4f6; 
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.item-thumbnail img {
+  width: 52px;
+  object-fit: contain;
+}
+
+/* Circle Badge Count */
+.item-badge-count {
+  background-color: #111111;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Information Container inside the Card */
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.item-meta .product-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px; /* Safely caps text lines to prevent overflow */
+  margin-right: 12px;
+}
+
+.item-meta .product-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+/* --- Calculations Interface Blocks --- */
+.pricing-breakdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 14px;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 24px;
+  margin-top: auto; 
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666666;
+}
+
+.final-total-row {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+  padding-top: 10px;
+  border-top: 1px dashed #e5e5e5;
+}
+
+/* --- Checkout Form Component Layout --- */
+.column-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #111111;
+}
+
+.delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.input-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.input-field-3col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-divider {
+  border: 0;
+  border-top: 1px solid #e5e5e5;
+  margin: 8px 0;
+}
+
+.delivery-form label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555555;
+}
+
+.delivery-form input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #111111;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.delivery-form input:focus {
+  outline: none;
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Form Submission Confirm Button */
+.submit-order-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #111111;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.submit-order-btn:hover {
+  background-color: #2a2a2a;
+}
+
+.submit-order-btn:active {
+  background-color: #000000;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 900px) {
+  .form-column, 
+  .summary-column {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column-reverse; /* This flips the layout: Items show at the top, Form moves below */
+  }
+  
+  .form-column, 
+  .summary-column {
+    width: 100%;
+    height: auto;
+  }
+  
+  .form-column {
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+@media (max-width: 540px) {
+  .input-row {
+    flex-direction: column;
+    gap: 22px;
+  }
+}

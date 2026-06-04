@@ -3,10 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script type="module" src="scripts/chekout.js" defer></script>
+  <title>Checkout Summary</title>
+  <script type="module" src="scripts/checkout.js" defer></script>
+  <link rel="stylesheet" href="styles/checkout.css">
 </head>
 <body>
-  <h1>hello</h1>
+  <!-- Renamed wrapper to emphasize layout intent -->
+  <main class="checkout-container">
+    
+    <!-- Left Column: Delivery Form -->
+    <section class="form-column">
+      <h2 class="column-title">Delivery Details</h2>
+      <form class="delivery-form">
+        
+        <!-- Name Row -->
+        <div class="input-row">
+          <div class="input-field">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="firstname" placeholder="John" required>
+          </div>
+          <div class="input-field">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="lastname" placeholder="Doe" required>
+          </div>
+        </div>
+
+        <!-- Contact Fields -->
+        <div class="input-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+        </div>
+
+        <div class="input-field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+        </div>
+
+        <hr class="form-divider">
+
+        <!-- Address Fields -->
+        <div class="input-field">
+          <label for="address">Street Address</label>
+          <input type="text" id="address" name="address" placeholder="123 Main St, Apt 4B" required>
+        </div>
+
+        <!-- City/State/Zip Row -->
+        <div class="input-row address-breakdown">
+          <div class="input-field-3col">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="New York" required>
+          </div>
+          <div class="input-field-3col">
+            <label for="state">State / Province</label>
+            <input type="text" id="state" name="state" placeholder="NY" required>
+          </div>
+          <div class="input-field-3col">
+            <label for="zipcode">ZIP / Postal Code</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="10001" required>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-order-btn">Confirm Order</button>
+      </form>
+    </section>
+
+    <!-- Right Column: Order Summary Info -->
+    <section class="summary-column">
+      <div class="cart-scroll-area">
+        
+        <!-- Item 1 -->
+        <div class="cart-item-card">
+          <div class="item-thumbnail">
+            <img src="Images/Jersey_1_-removebg-preview.png" alt="Jersey product thumbnail">
+            <span class="item-badge-count">1</span>
+          </div>
+          <div class="item-meta">
+            <p class="product-title">XXXXXXXXXXXXXXXXX</p>
+            <span class="product-price">$7.99</span>
+          </div>
+        </div>
+        
+        <!-- Item 2 -->
+        <div class="cart-item-card">
+          <div class="item-thumbnail">
+            <img src="Images/Jersey_1_-removebg-preview.png" alt="Jersey product thumbnail">
+            <span class="item-badge-count">2</span>
+          </div>
+          <div class="item-meta">
+            <p class="product-title">XXXXXXXXXXXXXXXXX</p>
+            <span class="product-price">$7.99</span>
+          </div>
+        </div>
+        
+        <!-- Item 3 -->
+        <div class="cart-item-card">
+          <div class="item-thumbnail">
+            <img src="Images/Jersey_1_-removebg-preview.png" alt="Jersey product thumbnail">
+            <span class="item-badge-count">3</span>
+          </div>
+          <div class="item-meta">
+            <p class="product-title">XXXXXXXXXXXXXXXXX</p>
+            <span class="product-price">$7.99</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pricing Summary Breakdown Panel -->
+      <div class="pricing-breakdown">
+        <div class="pricing-row">
+          <span>Subtotal &middot; 8 items</span>
+          <span>$410</span>
+        </div>
+        <div class="pricing-row">
+          <span>Shipping</span>
+          <span>$10</span>
+        </div>
+        <div class="pricing-row final-total-row">
+          <span>Total</span>
+          <span>$420</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
