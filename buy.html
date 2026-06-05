@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout Summary</title>
-  <script type="module" src="scripts/checkout.js" defer></script>
-  <link rel="stylesheet" href="styles/checkout.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  <link rel="stylesheet" href="styles/buy.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="module" src="scripts/buy.js" defer></script>
 </head>
 <body>
   <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
-  <!-- Renamed wrapper to emphasize layout intent -->
   <main class="checkout-container">
     
     <!-- Left Column: Delivery Form -->
@@ -53,16 +52,16 @@
 
         <!-- City/State/Zip Row -->
         <div class="input-row address-breakdown">
-          <div class="input-field-3col">
+          <div class="input-field">
             <label for="city">City</label>
             <input type="text" id="city" name="city" placeholder="New York" required>
           </div>
-          <div class="input-field-3col">
-            <label for="state">State / Province</label>
+          <div class="input-field size-small">
+            <label for="state">State</label>
             <input type="text" id="state" name="state" placeholder="NY" required>
           </div>
-          <div class="input-field-3col">
-            <label for="zipcode">ZIP / Postal Code</label>
+          <div class="input-field size-medium">
+            <label for="zipcode">ZIP Code</label>
             <input type="text" id="zipcode" name="zipcode" placeholder="10001" required>
           </div>
         </div>
@@ -72,12 +71,13 @@
       </form>
     </section>
 
-    <!-- Right Column: Order Summary Info -->
-    <section class="summary-column">
-      <div class="cart-scroll-area"></div>
-
-      <!-- Pricing Summary Breakdown Panel -->
-      <div class="pricing-breakdown"></div>
+    <!-- Right Column: Product Summary -->
+    <section class="product-info">
+      <div class="sticky-summary">
+        <h2 class="column-title">Order Summary</h2>
+        <div class="product-card"></div>
+        <div class="price-breakdown"></div>
+      </div>
     </section>
 
   </main>

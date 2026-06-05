@@ -72,6 +72,16 @@ categoryHeaderEl.forEach((categoryHeader) => {
 window.addEventListener("scroll", () => {
   if (!header) return;
 
+  // 1. Check if the hamburger menu is currently open
+  const isMenuOpen = document.querySelector(".menu-close-btn")?.classList.contains("active");
+
+  // 2. If open, force the header to stay visible and exit the function early
+  if (isMenuOpen) {
+    header.classList.remove("phone-header-hidden"); // Keeps background solid color on mobile if needed
+    return; 
+  }
+
+  // 3. Your original scroll logic runs normally ONLY when the menu is closed
   if (window.scrollY <= 0) {
     header.classList.add("header-topped");
   } else if (window.scrollY > lastScrollY) {
@@ -152,7 +162,7 @@ function generateCategoryHtml(product, categoryType) {
           <span>$${product.price.toFixed(2)}</span>
         </div>
         <div class="action">
-          <a class="buy-btn" href="productCheckout.html?id=${product.id}">Buy</a>
+          <a class="buy-btn" href="buy.html?id=${product.id}">Buy</a>
           <button class="add-to-cart-btn ${addedClass}" data-id="${product.id}">
             ${btnText} ${icon}
           </button>
@@ -210,8 +220,31 @@ function showAlert(product) {
   alertItemNameEl.textContent = product.name;
   alertItemPriceEl.textContent = `$${product.price.toFixed(2)}`;
   alertItemQuantityEl.textContent = "qty: 1";
+
+  document.querySelector(".alert-item-buy-now-btn").href = `buy.html?id=${product.id}`;
+  document.querySelector(".alert-item-preview").href = `product.html?id=${product.id}`;
   
   alertContainerTimeout = setTimeout(() => {
     alertContainer.classList.remove("alert-container-show");
   }, 3000);
 }
+
+
+
+
+
+const hamBtnEl = document.querySelector(".ham-btn");
+const navListEl = document.querySelector(".navigation-list");
+const menuCloseBtnEl = document.querySelector(".menu-close-btn");
+
+
+hamBtnEl.addEventListener("click", () => {
+  menuCloseBtnEl.classList.add("active");
+  navListEl.classList.add("active");
+});
+
+
+menuCloseBtnEl.addEventListener("click", () => {
+  navListEl.classList.remove("active");
+  menuCloseBtnEl.classList.remove("active");
+});

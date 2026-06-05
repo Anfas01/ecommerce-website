@@ -117,7 +117,7 @@ export function generateCartHtml() {
       if (product) {
         html += `
           <div class="cart-container">
-            <img src="${product.image}" alt="${product.name}">
+            <a href="product.html?id=${product.id}"><img src="${product.image}" alt="${product.name}"></a>
             <div class="cart-info-action-container">
               <div class="cart-info">
                 <p class="name">${product.name}</p>

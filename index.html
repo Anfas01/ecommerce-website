@@ -34,19 +34,25 @@
        HEADER / NAVIGATION
   ========================== -->
   <header class="main-header header-hidden">
+
+    <button class="ham-btn active" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
     <nav class="navigation">
       <ul class="navigation-list">
+        <button class="menu-close-btn"><i class="fa-solid fa-xmark"></i></button>
         <li>
-          <a class="navigation-list-category-header navigation-list-category-header-active">All</a>
+          <a href="#grid-container" class="navigation-list-category-header navigation-list-category-header-active">All</a>
         </li>
         <li>
-          <a class="navigation-list-category-header">Top</a>
+          <a href="#grid-container" class="navigation-list-category-header">Top</a>
         </li>
         <li>
-          <a class="navigation-list-category-header">Bottoms</a>
+          <a href="#grid-container" class="navigation-list-category-header">Bottoms</a>
         </li>
         <li>
-          <a class="navigation-list-category-header">Accessories</a>
+          <a href="#grid-container" class="navigation-list-category-header">Accessories</a>
         </li>
       </ul>
     </nav>
@@ -108,7 +114,7 @@
   <!-- =========================
        MAIN PRODUCT SECTION
   ========================== -->
-  <main class="grid-container">
+  <main id="grid-container" class="grid-container">
     <!-- Products injected dynamically via JavaScript -->
   </main>
 
@@ -130,7 +136,7 @@
 
       <!-- Product Info -->
       <div class="alert-item-info">
-        <img class="alert-item-img" src="" alt="Added product image">
+        <a class="alert-item-preview" href=""><img class="alert-item-img" src="" alt="Added product image"></a>
         <div class="alert-item-name-price-quantity">
           <div class="alert-item-name"></div>
           <div class="alert-item-price-quantity">
@@ -143,7 +149,7 @@
       <!-- Alert Actions -->
       <div class="alert-btns">
         <button class="alert-item-view-cart-btn">View Cart</button>
-        <button class="buy-now-btn">Buy Now</button>
+        <a class="alert-item-buy-now-btn" href=""><button class="buy-now-btn">Buy Now</button></a>
       </div>
     </div>
   </section>

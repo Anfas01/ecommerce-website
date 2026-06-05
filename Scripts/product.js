@@ -36,11 +36,11 @@ function rennder () {
           <h3>Product Features <i class="fa-solid fa-angle-down product-features-tittle-icon"></i></h3>
         </div>
         <ul class="product-features-list">
-          <li>- Lorem ipsum dolor sit amet consectetur.</li>
-          <li>- Lorem ipsum dolor sit amet consectetur.</li>
-          <li>- Lorem ipsum dolor sit amet consectetur.</li>
-          <li>- Lorem ipsum dolor sit amet consectetur.</li>
-          <li>- Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
         </ul>
       </section>
     </section>
