@@ -3,83 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout Summary</title>
-  <link rel="stylesheet" href="styles/buy.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Direct Buy Checkout | E-Commerce Express Purchase</title>
+  
+  <!-- Shared Design Architecture Core Resource Linking Sheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/checkout-shared.css">
+  
+  <!-- Vector Graphics Icon Library Layer Access Interface CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Component Single Dynamic Transaction Module Controller -->
   <script type="module" src="scripts/buy.js" defer></script>
 </head>
 <body>
-  <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
-  <main class="checkout-container">
-    
-    <!-- Left Column: Delivery Form -->
-    <section class="form-column">
-      <h2 class="column-title">Delivery Details</h2>
-      <form class="delivery-form">
+
+  <a href="index.html" class="back-btn-circle" aria-label="Abort current express direct acquisition operation pipeline workflow steps and return to storefront dashboard">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+  <main class="transaction-container">
+    <!-- Left Column: Logistics Operational Metadata Input Terminal Form Component -->
+    <section class="transaction-container__form-pane customer-form">
+      <h2 class="customer-form__title">Delivery Details</h2>
+      <form class="customer-form__body">
         
-        <!-- Name Row -->
-        <div class="input-row">
-          <div class="input-field">
+        <div class="customer-form__row">
+          <div class="customer-form__input-group">
             <label for="first-name">First Name</label>
             <input type="text" id="first-name" name="firstname" placeholder="John" required>
           </div>
-          <div class="input-field">
+          <div class="customer-form__input-group">
             <label for="last-name">Last Name</label>
             <input type="text" id="last-name" name="lastname" placeholder="Doe" required>
           </div>
         </div>
 
-        <!-- Contact Fields -->
-        <div class="input-field">
+        <div class="customer-form__input-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
         </div>
 
-        <div class="input-field">
+        <div class="customer-form__input-group">
           <label for="phone">Phone Number</label>
           <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
         </div>
 
-        <hr class="form-divider">
+        <hr class="customer-form__divider">
 
-        <!-- Address Fields -->
-        <div class="input-field">
+        <div class="customer-form__input-group">
           <label for="address">Street Address</label>
           <input type="text" id="address" name="address" placeholder="123 Main St, Apt 4B" required>
         </div>
 
-        <!-- City/State/Zip Row -->
-        <div class="input-row address-breakdown">
-          <div class="input-field">
+        <div class="customer-form__row customer-form__row--address-breakdown">
+          <div class="customer-form__input-group customer-form__input-group--flex-two">
             <label for="city">City</label>
             <input type="text" id="city" name="city" placeholder="New York" required>
           </div>
-          <div class="input-field size-small">
+          <div class="customer-form__input-group customer-form__input-group--flex-half">
             <label for="state">State</label>
             <input type="text" id="state" name="state" placeholder="NY" required>
           </div>
-          <div class="input-field size-medium">
+          <div class="customer-form__input-group customer-form__input-group--flex-one">
             <label for="zipcode">ZIP Code</label>
             <input type="text" id="zipcode" name="zipcode" placeholder="10001" required>
           </div>
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="submit-order-btn">Confirm Order</button>
+        <button type="submit" class="customer-form__submit-btn">Confirm Order</button>
       </form>
     </section>
 
-    <!-- Right Column: Product Summary -->
-    <section class="product-info">
-      <div class="sticky-summary">
-        <h2 class="column-title">Order Summary</h2>
-        <div class="product-card"></div>
-        <div class="price-breakdown"></div>
+    <!-- Right Column: Single Express Card Informational Panel Block Terminal -->
+    <section class="transaction-container__summary-pane invoice-panel">
+      <div class="invoice-panel__sticky-wrapper">
+        <h2 class="invoice-panel__section-title">Order Summary</h2>
+        <div class="invoice-panel__single-product-card target-express-product-card"></div>
+        <div class="invoice-panel__pricing-breakdown target-express-pricing-summary"></div>
       </div>
     </section>
-
   </main>
+
 </body>
 </html>

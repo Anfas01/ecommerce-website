@@ -1,0 +1,80 @@
+/* ==========================================================================
+   GLOBAL DESIGN TOKENS, RESETS & BASE LAYOUT VARIABLES
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --font-primary: "Rubik", sans-serif;
+  --color-dark: #111111;
+  --color-light-gray: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-muted: #666666;
+  --color-success: #4caf50;
+  --z-index-header: 1000;
+  --z-index-drawer: 2000;
+  --z-index-toast: 3000;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #ffffff;
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Shared Navigation Button Micro-animations --- */
+.back-btn-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-dark);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: var(--z-index-header);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: var(--transition-smooth);
+}
+
+.back-btn-circle:hover {
+  background-color: var(--color-dark);
+  color: #ffffff;
+  border-color: var(--color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Shared Core Component Dynamic Utility Framework Animation Classes */
+.utility-slide-up-animation {
+  animation: structuralSlideUpFrame 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes structuralSlideUpFrame {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

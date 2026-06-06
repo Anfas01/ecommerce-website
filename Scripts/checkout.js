@@ -1,77 +1,76 @@
-import {cart} from "./cart.js";
-import {database} from "./database.js";
+/**
+ * ==========================================================================
+ * CONTROLLER DRIVER MODULE: MULTI-ITEM BASKET CHECKOUT SYSTEM
+ * ==========================================================================
+ */
 
-const checkoutItemsEl = document.querySelector(".cart-scroll-area");
-const checkoutPriceEl = document.querySelector(".pricing-breakdown");
+import { cart } from "./cart.js";
+import { database } from "./database.js";
 
-if (checkoutItemsEl){
-  checkoutItemsEl.innerHTML = generateCheckoutItemsHtml();
+const checkoutItemsContainerNode = document.querySelector(".target-checkout-items-list");
+const checkoutSummaryCalculationsNode = document.querySelector(".target-checkout-pricing-summary");
+
+if (checkoutItemsContainerNode) {
+  checkoutItemsContainerNode.innerHTML = buildCheckoutItemsHTML();
 }
 
-if (checkoutPriceEl){
-  checkoutPriceEl.innerHTML = generateCheckoutPriceHtml();
+if (checkoutSummaryCalculationsNode) {
+  checkoutSummaryCalculationsNode.innerHTML = buildCheckoutTotalsHTML();
 }
 
-function generateCheckoutItemsHtml () {
-  let html = ``;
-  
-  // If cart is empty, return early with the empty message
+/**
+ * Iterates through active array object structures compiling text markup code templates
+ */
+function buildCheckoutItemsHTML() {
   if (!cart.length) {
-    return html + `<p class="cart-empty-message">Your cart is empty</p>`;
+    return `<p style="text-align:center; padding:40px; color:#666;">Your validation checkout basket structure records contain no items.</p>`;
   }
-  
-  cart.forEach(cartItem => {
-    const product = database.find((p) => p.id === cartItem.productId);
 
-    if (product) {
-      html += `
-        <div class="cart-item-card">
-          <div class="item-thumbnail">
-            <a href="product.html?id=${product.id}"><img src="${product.preview}" alt="Jersey product thumbnail"></a>
-            <span class="item-badge-count">${cartItem.quantity}</span>
-          </div>
-          <div class="item-meta">
-            <p class="product-title">${product.name}</p>
-            <span class="product-price">$${product.price.toFixed(2)}</span>
-          </div>
+  return cart.map((cartItem) => {
+    const productMatch = database.find((p) => p.id === cartItem.productId);
+    if (!productMatch) return "";
+
+    return `
+      <div class="invoice-item-row-card">
+        <div class="invoice-item-row-card__thumb-box">
+          <a href="product.html?id=${productMatch.id}">
+            <img src="${productMatch.preview}" alt="${productMatch.name} overview content visual">
+          </a>
+          <span class="invoice-item-row-card__badge-count">${cartItem.quantity}</span>
         </div>
-      `;
-    }
-  });
-
-  return html; 
+        <div class="invoice-item-row-card__meta">
+          <p class="invoice-item-row-card__name">${productMatch.name}</p>
+          <span class="invoice-item-row-card__price-tag">$${productMatch.price.toFixed(2)}</span>
+        </div>
+      </div>
+    `;
+  }).join("");
 }
 
-function generateCheckoutPriceHtml () {
- 
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  const shipping = totalItems === 0 ? 0 : 5.99;
-  let totalItemsPrice = 0;
+/**
+ * Computes billing mathematical operations dynamically mapping variable array rows
+ */
+function buildCheckoutTotalsHTML() {
+  const accumulatedItemsQuantityCount = cart.reduce((total, explicitItem) => total + explicitItem.quantity, 0);
+  const logisticalShippingFeeMetric = accumulatedItemsQuantityCount === 0 ? 0 : 5.99;
+  
+  const financialSubtotalSumValue = cart.reduce((accTotal, itemReference) => {
+    const assetMetaMatch = database.find((p) => p.id === itemReference.productId);
+    return assetMetaMatch ? accTotal + (assetMetaMatch.price * itemReference.quantity) : accTotal;
+  }, 0);
 
-  cart.forEach(item => {
-    const product = database.find((p) => p.id === item.productId);
-    if (product) {
-      totalItemsPrice += product.price * item.quantity;
-    }
-  });
-
-
-
-
-  let html = `
-    <div class="pricing-row">
-      <span>Subtotal &middot; ${totalItems} items</span>
-      <span>$${totalItemsPrice.toFixed(2)}</span>
+  return `
+    <div class="invoice-panel__billing-row">
+      <span>Subtotal &middot; ${accumulatedItemsQuantityCount} items</span>
+      <span>$${financialSubtotalSumValue.toFixed(2)}</span>
     </div>
-    <div class="pricing-row">
+    <div class="invoice-panel__billing-row">
       <span>Shipping</span>
-      <span>$${shipping.toFixed(2)}</span>
+      <span>$${logisticalShippingFeeMetric.toFixed(2)}</span>
     </div>
-    <div class="pricing-row final-total-row">
+    <div class="invoice-panel__billing-row invoice-panel__billing-row--bold-total">
       <span>Total</span>
-      <span>$${(totalItemsPrice + shipping).toFixed(2)}</span>
+      <span>$${(financialSubtotalSumValue + logisticalShippingFeeMetric).toFixed(2)}</span>
     </div>
   `;
-
-  return html;
 }

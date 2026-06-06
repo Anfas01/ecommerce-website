@@ -1,173 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Store | Discover Trends</title>
+  <meta name="description" content="Modern e-commerce platform featuring lightning fast fluid shopping cart functionality.">
 
-  <!-- SEO -->
-  <title>E-Commerce Store</title>
-  <meta name="description" content="Modern e-commerce website with shopping cart functionality.">
+  <!-- Core Component Style Manifests -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/cart.css">
+  <link rel="stylesheet" href="styles/index.css">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/cartstyle.css">
-
-  <!-- Font Awesome -->
+  <!-- Third-Party Icon Assets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- JavaScript -->
-  <script type="module" src="scripts/script.js" defer></script>
+  <!-- Core Single Page Architecture Script Entry Module -->
+  <script type="module" src="scripts/index.js" defer></script>
 </head>
-
 <body>
 
-  <!-- =========================
-       LANDING SECTION
-  ========================== -->
-  <section class="landing-page">
-    <h1>Welcome.</h1>
+  <!-- Hero Splash Panel -->
+  <section class="hero-billboard">
+    <h1 class="hero-billboard__title">Welcome.</h1>
   </section>
 
-  <!-- =========================
-       HEADER / NAVIGATION
-  ========================== -->
-  <header class="main-header header-hidden">
-
-    <button class="ham-btn active" aria-label="Toggle Menu">
+  <!-- Navigation Hub -->
+  <header class="site-header site-header--hidden">
+    <button class="site-header__menu-toggle" aria-label="Open Navigation Menu">
       <i class="fa-solid fa-bars"></i>
     </button>
 
-    <nav class="navigation">
-      <ul class="navigation-list">
-        <button class="menu-close-btn"><i class="fa-solid fa-xmark"></i></button>
-        <li>
-          <a href="#grid-container" class="navigation-list-category-header navigation-list-category-header-active">All</a>
+    <nav class="site-header__nav navigation-drawer">
+      <button class="navigation-drawer__close" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <ul class="navigation-drawer__list">
+        <li class="navigation-drawer__item">
+          <a href="#product-grid" class="navigation-drawer__link navigation-drawer__link--active">All</a>
         </li>
-        <li>
-          <a href="#grid-container" class="navigation-list-category-header">Top</a>
+        <li class="navigation-drawer__item">
+          <a href="#product-grid" class="navigation-drawer__link">Top</a>
         </li>
-        <li>
-          <a href="#grid-container" class="navigation-list-category-header">Bottoms</a>
+        <li class="navigation-drawer__item">
+          <a href="#product-grid" class="navigation-drawer__link">Bottoms</a>
         </li>
-        <li>
-          <a href="#grid-container" class="navigation-list-category-header">Accessories</a>
+        <li class="navigation-drawer__item">
+          <a href="#product-grid" class="navigation-drawer__link">Accessories</a>
         </li>
       </ul>
     </nav>
 
-    <!-- Cart Button -->
-    <div class="header-cart-container">
-      <button class="cart-btn">
-        Cart (<span class="cart-item-count">0</span>)
+    <!-- Shopping Trigger Box -->
+    <div class="site-header__cart-zone">
+      <button class="cart-trigger-btn" aria-label="Open Cart View">
+        Cart (<span class="cart-trigger-btn__counter">0</span>)
       </button>
     </div>
   </header>
 
-  <!-- =========================
-       CART SIDEBAR
-  ========================== -->
-  <aside class="carts">
-    <!-- Cart Header -->
-    <div class="cart-header">
-      <button class="cart-close-btn" aria-label="Close shopping cart">
+  <!-- Flyout Cart Drawer Aside Panel -->
+  <aside class="cart-sidebar" aria-hidden="true">
+    <div class="cart-sidebar__header">
+      <button class="cart-sidebar__close" aria-label="Close shopping cart">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div class="cart-title">
-        <h2>
-          Cart
-          <i class="fa-solid fa-cart-arrow-down"></i>
-        </h2>
-      </div>
+      <h2 class="cart-sidebar__title">
+        Cart <i class="fa-solid fa-cart-arrow-down" aria-hidden="true"></i>
+      </h2>
     </div>
 
-    <!-- Dynamic Cart Items -->
-    <div class="carts-grid"></div>
+    <!-- Reactive Core Product Items Target -->
+    <div class="cart-sidebar__items-grid"></div>
 
-    <!-- Checkout Section -->
-    <div class="cart-checkout">
-      <div class="subtotal-container">
+    <!-- Transaction Entry Point Box -->
+    <div class="cart-sidebar__footer summary-checkout">
+      <div class="summary-checkout__subtotal-row">
         <span>Subtotal</span>
-        <span class="subtotal"></span>
+        <span class="summary-checkout__price-value"></span>
       </div>
-      <a href="checkout.html" class="checkout-btn">Checkout</a>
+      <a href="checkout.html" class="summary-checkout__action-btn">Checkout</a>
     </div>
 
-    <!-- Product Recommendations -->
-    <section class="cart-recommendation-container">
-      <h3 class="cart-recommendation-title">You might also like</h3>
-      <div class="cart-recommendation-grid">
-        <div>
-          <img src="images/Jersey(1).jfif" alt="Sports jersey">
+    <!-- Related Recommendations Carousel Section -->
+    <section class="cart-sidebar__upsell upsell-recommendations">
+      <h3 class="upsell-recommendations__title">You might also like</h3>
+      <div class="upsell-recommendations__grid">
+        <div class="upsell-recommendations__card">
+          <img src="images/Jersey(1).jfif" alt="Sports jersey preview item">
         </div>
-        <div>
-          <img src="images/Hoodie(2).jfif" alt="Black hoodie">
+        <div class="upsell-recommendations__card">
+          <img src="images/Hoodie(2).jfif" alt="Black hoodie preview item">
         </div>
-        <div>
-          <img src="images/T-Shirt(2).jpg" alt="Casual t-shirt">
+        <div class="upsell-recommendations__card">
+          <img src="images/T-Shirt(2).jpg" alt="Casual t-shirt preview item">
         </div>
       </div>
     </section>
   </aside>
 
-  <!-- =========================
-       MAIN PRODUCT SECTION
-  ========================== -->
-  <main id="grid-container" class="grid-container">
-    <!-- Products injected dynamically via JavaScript -->
+  <!-- Main Storefront Catalog Area -->
+  <main id="product-grid" class="catalog-grid">
+    <!-- Component templates dynamically loaded via Javascript render matrices -->
   </main>
 
-  <!-- =========================
-       ADD TO CART ALERT
-  ========================== -->
-  <section class="alert-container">
-    <div class="alert-content">
-      <!-- Alert Header -->
-      <div class="alert-header">
-        <div class="alert-title">
+  <!-- Toast Notification System Component -->
+  <section class="toast-alert" aria-live="polite">
+    <div class="toast-alert__body">
+      <div class="toast-alert__header">
+        <div class="toast-alert__status">
           <i class="fa-solid fa-check" aria-hidden="true"></i>
           <span>Item added to your cart</span>
         </div>
-        <button class="alert-close-btn" aria-label="Close notification">
+        <button class="toast-alert__close" aria-label="Close notification">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Product Info -->
-      <div class="alert-item-info">
-        <a class="alert-item-preview" href=""><img class="alert-item-img" src="" alt="Added product image"></a>
-        <div class="alert-item-name-price-quantity">
-          <div class="alert-item-name"></div>
-          <div class="alert-item-price-quantity">
-            <div class="alert-item-price"></div>
-            <div class="alert-item-quantity"></div>
+      <div class="toast-alert__preview preview-item">
+        <a class="preview-item__link-wrapper" href="#">
+          <img class="preview-item__image" src="" alt="Thumbnail reference snapshot">
+        </a>
+        <div class="preview-item__meta">
+          <div class="preview-item__name"></div>
+          <div class="preview-item__details">
+            <div class="preview-item__price"></div>
+            <div class="preview-item__qty"></div>
           </div>
         </div>
       </div>
 
-      <!-- Alert Actions -->
-      <div class="alert-btns">
-        <button class="alert-item-view-cart-btn">View Cart</button>
-        <a class="alert-item-buy-now-btn" href=""><button class="buy-now-btn">Buy Now</button></a>
+      <div class="toast-alert__actions">
+        <button class="toast-alert__btn toast-alert__btn--secondary btn-view-cart">View Cart</button>
+        <a class="toast-alert__link-btn btn-buy-now" href="#">
+          <button class="toast-alert__btn toast-alert__btn--primary">Buy Now</button>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- Footnote Metadata Directory Section -->
   <footer class="site-footer">
-    <div class="footer-container">
-      
-      <div class="footer-section about">
-        <h2 class="footer-logo">E-Commerce Store</h2>
-        <p>Your one-stop shop for the latest trends. High quality, affordable prices, and fast shipping worldwide.</p>
+    <div class="site-footer__container">
+      <div class="site-footer__section site-footer__section--about">
+        <h2 class="site-footer__logo">E-Commerce Store</h2>
+        <p class="site-footer__description">Your one-stop shop for the latest trends. High quality, affordable prices, and fast shipping worldwide.</p>
       </div>
 
-      <div class="footer-section links">
+      <div class="site-footer__section site-footer__section--links">
         <h3>Quick Links</h3>
-        <ul>
+        <ul class="site-footer__list">
           <li><a href="#all">Home</a></li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Contact</a></li>
@@ -175,9 +156,9 @@
         </ul>
       </div>
 
-      <div class="footer-section categories">
+      <div class="site-footer__section site-footer__section--categories">
         <h3>Shop</h3>
-        <ul>
+        <ul class="site-footer__list">
           <li><a href="#all">All Products</a></li>
           <li><a href="#shirts">Shirts</a></li>
           <li><a href="#tshirts">T-Shirts</a></li>
@@ -185,18 +166,17 @@
         </ul>
       </div>
 
-      <div class="footer-section social">
+      <div class="site-footer__section site-footer__section--socials">
         <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook">FB</a>
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Twitter">TW</a>
+        <div class="site-footer__social-icons">
+          <a href="#" aria-label="Visit Facebook Page">FB</a>
+          <a href="#" aria-label="Visit Instagram Profile">IG</a>
+          <a href="#" aria-label="Visit Twitter Stream">TW</a>
         </div>
       </div>
-
     </div>
 
-    <div class="footer-bottom">
+    <div class="site-footer__bottom">
       <p>&copy; 2026 E-Commerce Store. All rights reserved.</p>
     </div>
   </footer>

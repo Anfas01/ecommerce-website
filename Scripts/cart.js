@@ -1,179 +1,167 @@
+/**
+ * ==========================================================================
+ * GLOBAL APPLICATION ARCHITECTURE FRAMEWORK SYSTEM: MODULE ENGINE CORE CART
+ * ==========================================================================
+ */
+
 import { database } from "./database.js";
 
-// ==========================================
-// STATE & APP VARIABLES
-// ==========================================
-// Global cart state, initialized from localStorage to persist data across page reloads
+// --- State Machine Lifecycle Engine Initialization Configuration ---
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// DOM element references for the shopping cart UI
-const cartsGridEl = document.querySelector(".carts-grid");
-const subtotalEl = document.querySelector(".subtotal");
-const cartCloseBtn = document.querySelector(".cart-close-btn");
-const cartCountEl = document.querySelector(".cart-item-count");
+// Cache Core Sticky Architectural Dom Layout Nodes Structure Objects
+const DOM = {
+  containerDrawerAside: document.querySelector(".cart-sidebar"),
+  targetGridElementsBox: document.querySelector(".cart-sidebar__items-grid"),
+  subtotalFieldLabelNode: document.querySelector(".summary-checkout__price-value"),
+  closeSidebarTriggerBtn: document.querySelector(".cart-sidebar__close"),
+  badgeItemsCounterNode: document.querySelector(".cart-trigger-btn__counter")
+};
 
-// ==========================================
-// EVENT LISTENERS
-// ==========================================
-if (cartCloseBtn) {
-  cartCloseBtn.addEventListener("click", () => {
-    const carts = document.querySelector(".carts");
-    if (carts) {
-      carts.style.transform = "translateX(1000px)";
+// --- Structural Animation Reflow Helper Method ---
+const triggerElementReflowAnimation = (elementNodeTarget) => {
+  if (!elementNodeTarget) return;
+  elementNodeTarget.classList.remove("utility-slide-up-animation");
+  void elementNodeTarget.offsetWidth; // Explicit mechanical layout reflow command execution trigger
+  elementNodeTarget.classList.add("utility-slide-up-animation");
+};
+
+// Toggle Sidebar Flyout Operational Visibility Triggers Bindings
+if (DOM.closeSidebarTriggerBtn) {
+  DOM.closeSidebarTriggerBtn.addEventListener("click", () => {
+    if (DOM.containerDrawerAside) {
+      DOM.containerDrawerAside.classList.remove("cart-sidebar--open");
+      DOM.containerDrawerAside.setAttribute("aria-hidden", "true");
     }
   });
 }
 
-// ==========================================
-// EVENT HANDLERS & INTERNAL FUNCTIONS
-// ==========================================
-
 /**
- * Attaches event listeners to the dynamic elements inside the cart (Remove, Plus, Minus buttons).
+ * Event-Binding Delegation Routine Engine System for dynamically created inner items elements
  */
-function attachCartListeners() {
-  document.querySelectorAll(".cart-remove").forEach((btn) => {
-    btn.addEventListener("click", () => cartRemove(btn));
+function bindInteractiveCartUiControls() {
+  document.querySelectorAll(".cart-row-item__remove-trigger").forEach((removeAnchorNode) => {
+    removeAnchorNode.addEventListener("click", () => {
+      const activeId = Number(removeAnchorNode.dataset.id);
+      cart = cart.filter((item) => item.productId !== activeId);
+      persistCartStateAndSyncUI();
+    });
   });
 
-  document.querySelectorAll(".quantity-plus-btn").forEach((btn) => {
-    btn.addEventListener("click", () => cartQuantity(btn, "plus"));
+  document.querySelectorAll(".js-qty-plus").forEach((incrementBtnNode) => {
+    incrementBtnNode.addEventListener("click", () => modifyItemQuantity(Number(incrementBtnNode.dataset.id), "increment"));
   });
 
-  document.querySelectorAll(".quantity-minus-btn").forEach((btn) => {
-    btn.addEventListener("click", () => cartQuantity(btn, "minus"));
+  document.querySelectorAll(".js-qty-minus").forEach((decrementBtnNode) => {
+    decrementBtnNode.addEventListener("click", () => modifyItemQuantity(Number(decrementBtnNode.dataset.id), "decrement"));
   });
 }
 
 /**
- * Removes an item from the cart based on the product ID.
- * @param {HTMLElement} btn - The button element containing the data-id.
+ * Processes arithmetic state value step changes safely inside localized boundary rules criteria limits
  */
-function cartRemove(btn) {
-  const id = Number(btn.dataset.id);
-  cart = cart.filter((item) => item.productId !== id);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  document.dispatchEvent(new Event("cartChanged"));
-}
+function modifyItemQuantity(productIdTargetKey, operationalVarianceType) {
+  let changeHasBeenValidated = false;
 
-/**
- * Increases or decreases the quantity of a specific cart item.
- * @param {HTMLElement} btn - The button element containing the data-id.
- * @param {string} operation - Either 'plus' or 'minus'.
- */
-function cartQuantity(btn, operation) {
-  const id = Number(btn.dataset.id);
-  let itemChanged = false;
-
-  cart = cart.map((cartItem) => {
-    if (cartItem.productId === id) {
-      if (operation === "plus" && cartItem.quantity < 3) {
-        cartItem.quantity++;
-        itemChanged = true;
-      } else if (operation === "minus" && cartItem.quantity > 1) {
-        cartItem.quantity--;
-        itemChanged = true;
+  cart = cart.map((targetCartRecordUnit) => {
+    if (targetCartRecordUnit.productId === productIdTargetKey) {
+      if (operationalVarianceType === "increment" && targetCartRecordUnit.quantity < 3) {
+        targetCartRecordUnit.quantity++;
+        changeHasBeenValidated = true;
+      } else if (operationalVarianceType === "decrement" && targetCartRecordUnit.quantity > 1) {
+        targetCartRecordUnit.quantity--;
+        changeHasBeenValidated = true;
       }
     }
-    return cartItem;
+    return targetCartRecordUnit;
   });
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  
-  // 1. Notify the app to re-render the UI
-  document.dispatchEvent(new Event("cartChanged"));
+  persistCartStateAndSyncUI();
 
-  // 2. If an item changed, find THAT SPECIFIC element and animate it
-  if (itemChanged) {
-    // Look up the specific element container by its data-id instead of relative step navigation
-    const cartContainer = btn.closest(".cart-container");
-    const quantitySpan = cartContainer?.querySelector(".quantity");
-    
-    if (quantitySpan) {
-      quantitySpan.classList.remove("slide-up-animation");
-      void quantitySpan.offsetWidth; // Force a CSS reflow
-      quantitySpan.classList.add("slide-up-animation");
-    }
+  if (changeHasBeenValidated) {
+    const contextualTargetRowWrapperNode = document.querySelector(`.cart-row-item [data-id="${productIdTargetKey}"]`).closest(".cart-row-item");
+    const localizedTextCounterNode = contextualTargetRowWrapperNode?.querySelector(".cart-row-item__numeric-display");
+    triggerElementReflowAnimation(localizedTextCounterNode);
   }
 }
 
-// ==========================================
-// EXPORTED API METHODS
-// ==========================================
+/**
+ * Commits updates to LocalStorage and dispatches synchronization events across app boundaries
+ */
+function persistCartStateAndSyncUI() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  document.dispatchEvent(new Event("cartChanged"));
+}
 
 /**
- * Iterates through the cart array and generates the HTML for the sidebar.
- * If the cart is empty, it displays a placeholder message.
+ * Compiles structural templates for the active lines collection drawer sidebar
  */
 export function generateCartHtml() {
-  let html = "";
+  if (!DOM.targetGridElementsBox) return;
 
-  if (!cartsGridEl) return;
-
-  if (cart.length > 0) {
-    // Render from newest added to oldest
-    cart.slice().reverse().forEach((item) => {
-      const product = database.find((p) => p.id === item.productId);
-      if (product) {
-        html += `
-          <div class="cart-container">
-            <a href="product.html?id=${product.id}"><img src="${product.image}" alt="${product.name}"></a>
-            <div class="cart-info-action-container">
-              <div class="cart-info">
-                <p class="name">${product.name}</p>
-                <span>$${product.price.toFixed(2)}</span>
-              </div>
-              <div class="cart-action">
-                <span class="cart-quantity">Qty:<br>
-                  <i class="fa-solid fa-minus quantity-minus-btn" data-id="${product.id}"></i>
-                  <span class="quantity">${item.quantity}</span>
-                  <i class="fa-solid fa-plus quantity-plus-btn" data-id="${product.id}"></i>
-                </span>
-                <span class="cart-remove" data-id="${product.id}">Remove</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-    });
-  } else {
-    html = '<p style="text-align: center; padding: 20px;">Your cart is empty.</p>';
+  if (cart.length === 0) {
+    DOM.targetGridElementsBox.innerHTML = `<p style="text-align: center; padding: 40px; color:#666;">Your cart is currently empty.</p>`;
+    return;
   }
 
-  cartsGridEl.innerHTML = html;
-  attachCartListeners();
+  // Parse layout from top down showing newest items first
+  const internalCompiledHTMLTemplate = cart.slice().reverse().map((item) => {
+    const systemProductMetadataMatch = database.find((product) => product.id === item.productId);
+    if (!systemProductMetadataMatch) return "";
+
+    return `
+      <div class="cart-row-item">
+        <a href="product.html?id=${systemProductMetadataMatch.id}">
+          <img src="${systemProductMetadataMatch.image}" alt="${systemProductMetadataMatch.name} thumbnail reference view" class="cart-row-item__thumb">
+        </a>
+        <div class="cart-row-item__details">
+          <div class="cart-row-item__title-row">
+            <p class="cart-row-item__title">${systemProductMetadataMatch.name}</p>
+            <span>$${systemProductMetadataMatch.price.toFixed(2)}</span>
+          </div>
+          <div class="cart-row-item__action-row">
+            <span class="cart-row-item__quantity-selector">
+              <i class="fa-solid fa-minus cart-row-item__step-icon js-qty-minus" data-id="${systemProductMetadataMatch.id}"></i>
+              <span class="cart-row-item__numeric-display">${item.quantity}</span>
+              <i class="fa-solid fa-plus cart-row-item__step-icon js-qty-plus" data-id="${systemProductMetadataMatch.id}"></i>
+            </span>
+            <span class="cart-row-item__remove-trigger" data-id="${systemProductMetadataMatch.id}">Remove</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  DOM.targetGridElementsBox.innerHTML = internalCompiledHTMLTemplate;
+  bindInteractiveCartUiControls();
 }
 
 /**
- * Calculates the total cost of all items currently in the cart.
+ * Computes billing aggregate figures dynamically mapping active state values rows variables
  */
 export function subtotal() {
-  const total = cart.reduce((sum, item) => {
-    const product = database.find((p) => p.id === item.productId);
-    return product ? sum + product.price * item.quantity : sum;
+  const financialSubtotalSumValue = cart.reduce((totalAccumulator, currentLoopItem) => {
+    const productRecordAssetMetaMatch = database.find((p) => p.id === currentLoopItem.productId);
+    return productRecordAssetMetaMatch ? totalAccumulator + (productRecordAssetMetaMatch.price * currentLoopItem.quantity) : totalAccumulator;
   }, 0);
 
-  if (subtotalEl) {
-    const formattedTotal = `$${total.toFixed(2)}`;
-    if (subtotalEl.innerHTML !== formattedTotal) {
-      subtotalEl.classList.remove("slide-up-animation");
-      void subtotalEl.offsetWidth; // Force a CSS reflow
-      subtotalEl.innerHTML = formattedTotal;
-      subtotalEl.classList.add("slide-up-animation");
+  if (DOM.subtotalFieldLabelNode) {
+    const calculatedStringValueOutputLiteral = `$${financialSubtotalSumValue.toFixed(2)}`;
+    if (DOM.subtotalFieldLabelNode.innerHTML !== calculatedStringValueOutputLiteral) {
+      DOM.subtotalFieldLabelNode.innerHTML = calculatedStringValueOutputLiteral;
+      triggerElementReflowAnimation(DOM.subtotalFieldLabelNode);
     }
   }
 }
 
 /**
- * Updates the numeric badge showing the total number of items in the cart.
+ * Synchronizes the visual numeric metric notification badges items count display indicators
  */
 export function cartCount() {
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const aggregatedTotalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  if (cartCountEl) {
-    cartCountEl.classList.remove("slide-up-animation");
-    void cartCountEl.offsetWidth; // Force a CSS reflow
-    cartCountEl.textContent = count;
-    cartCountEl.classList.add("slide-up-animation");
+  if (DOM.badgeItemsCounterNode) {
+    DOM.badgeItemsCounterNode.textContent = aggregatedTotalCount;
+    triggerElementReflowAnimation(DOM.badgeItemsCounterNode);
   }
 }
