@@ -19,7 +19,7 @@ if (expressItemUnitCardContainer && matchingDatabaseProductItem) {
   expressItemUnitCardContainer.innerHTML = `
     <div class="invoice-panel__single-thumb">
       <a href="product.html?id=${matchingDatabaseProductItem.id}">
-        <img src="${matchingDatabaseProductItem.preview}" alt="${matchingDatabaseProductItem.name} capture profile visual link">
+        <img src="${matchingDatabaseProductItem.image}" alt="${matchingDatabaseProductItem.name} capture profile visual link">
       </a>
     </div>
     <div class="invoice-panel__single-meta">

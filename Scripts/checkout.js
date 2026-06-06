@@ -34,7 +34,7 @@ function buildCheckoutItemsHTML() {
       <div class="invoice-item-row-card">
         <div class="invoice-item-row-card__thumb-box">
           <a href="product.html?id=${productMatch.id}">
-            <img src="${productMatch.preview}" alt="${productMatch.name} overview content visual">
+            <img src="${productMatch.image}" alt="${productMatch.name} overview content visual">
           </a>
           <span class="invoice-item-row-card__badge-count">${cartItem.quantity}</span>
         </div>

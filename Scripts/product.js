@@ -38,7 +38,7 @@ function renderProductViewDetails() {
 
   mainLayoutContainerEl.innerHTML = `
     <section class="product-viewer-layout__gallery">
-      <img src="${productRecord.preview}" alt="${productRecord.name} detailed profile snapshot" class="product-viewer-layout__showcase-img">
+      <img src="${productRecord.image}" alt="${productRecord.name} detailed profile snapshot" class="product-viewer-layout__showcase-img">
     </section>
     <section class="product-viewer-layout__panel">
       <h1 class="product-name product-panel-title">${productRecord.name}</h1>
