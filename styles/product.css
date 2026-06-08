@@ -186,6 +186,7 @@
   
   .product-viewer-layout__showcase-img {
     max-width: 70%;
+    overflow: hidden;
   }
 
   .product-viewer-layout__panel {
