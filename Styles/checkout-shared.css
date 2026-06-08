@@ -318,3 +318,48 @@
     gap: 22px;
   }
 }
+
+
+/* --- Quantity Controls UI Component --- */
+.invoice-panel__single-meta div:has(.qty-value) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #555555; /* Matches your form labels */
+  margin-top: 4px;
+  user-select: none; /* Prevents accidental text highlighting on fast clicks */
+}
+
+.invoice-panel__single-meta div span:has(.qty-value) {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f3f4f6; /* Subtle background container */
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.qty-value {
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-dark, #1a1a1a);
+}
+
+.qty-minus, 
+.qty-plus {
+  cursor: pointer;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: #6b7280;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.qty-minus:hover, 
+.qty-plus:hover {
+  color: var(--color-dark, #000000);
+  transform: scale(1.15);
+}
