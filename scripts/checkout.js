@@ -66,11 +66,11 @@ function buildCheckoutTotalsHTML() {
     </div>
     <div class="invoice-panel__billing-row">
       <span>Shipping</span>
-      <span>$${logisticalShippingFeeMetric.toFixed(2)}</span>
+      <span style="color:rgb(22, 163, 74);">Free</span>
     </div>
     <div class="invoice-panel__billing-row invoice-panel__billing-row--bold-total">
       <span>Total</span>
-      <span>$${(financialSubtotalSumValue + logisticalShippingFeeMetric).toFixed(2)}</span>
+      <span>$${financialSubtotalSumValue .toFixed(2)}</span>
     </div>
   `;
 }
