@@ -25,7 +25,7 @@ function ProductViewDetails({ product, cartItem, setCartItem }) {
       <section className="product-viewer-layout__panel">
         <h1 className="product-name product-panel-title">{product.name}</h1>
         <p className="product-panel-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis soluta velit voluptate a consequuntur fugit earum voluptates atque hic.</p>
-        <span className="product-panel-price">${product.price.toFixed(2)}</span>
+        <span className="product-panel-price">${(product.price ?? 0).toFixed(2)}</span>
 
         <Link to={`/buy/${product.id}`}>
           <button className="product-panel-btn product-panel-btn--primary btn-buy-direct">Buy Now</button>

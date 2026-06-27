@@ -79,15 +79,15 @@ function CheckoutMain({ cartItem }) {
         <div className="invoice-panel__pricing-breakdown target-checkout-pricing-summary">
           <div className="invoice-panel__billing-row">
             <span>Subtotal &middot; {totalItems} items</span>
-            <span>${subTotal.toFixed(2)}</span>
+            <span>${(subTotal ?? 0).toFixed(2)}</span>
           </div>
           <div className="invoice-panel__billing-row">
             <span>Shipping</span>
-            <span>${shippingFee.toFixed(2)}</span>
+            <span>${(shippingFee ?? 0).toFixed(2)}</span>
           </div>
           <div className="invoice-panel__billing-row invoice-panel__billing-row--bold-total">
             <span>Total</span>
-            <span>${grandTotal.toFixed(2)}</span>
+            <span>${(grandTotal ?? 0).toFixed(2)}</span>
           </div>
         </div>
       </section>

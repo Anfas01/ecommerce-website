@@ -34,7 +34,7 @@ function CartItemCard({ cartItem, setCartItem }) {
       <div className="cart-row-item__details">
         <div className="cart-row-item__title-row">
           <p className="cart-row-item__title">{cartItem.name}</p>
-          <span>${cartItem.price.toFixed(2)}</span>
+          <span>${(cartItem.price ?? 0).toFixed(2)}</span>
         </div>
         <div className="cart-row-item__action-row">
           <span className="cart-row-item__quantity-selector">

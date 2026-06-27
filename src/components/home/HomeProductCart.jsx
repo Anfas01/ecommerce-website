@@ -24,7 +24,7 @@ function HomeProductCart({ product, cartItem, setCartItem, setShowAlertId }) {
       </Link>
       <div className="product-card-unit__meta">
         <p className="product-card-unit__name">{product.name}</p>
-        <span className="product-card-unit__price">${product.price.toFixed(2)}</span>
+        <span className="product-card-unit__price">${(product.price ?? 0).toFixed(2)}</span>
       </div>
       <div className="product-card-unit__action-block">
         <Link className="product-card-unit__btn" to={`/buy/${product.id}`}>Buy</Link>

@@ -21,6 +21,8 @@ function Alert({ setShowAlertId, showAlertId, setIsCartOpen }) {
     setIsCartOpen(true);
   }
 
+  if (!product) return null;
+
   return (
     <section
       className={`toast-alert ${showAlertId ? "toast-alert--visible" : ""}`}
@@ -48,7 +50,9 @@ function Alert({ setShowAlertId, showAlertId, setIsCartOpen }) {
           <div className="preview-item__meta">
             <div className="preview-item__name">{product.name}</div>
             <div className="preview-item__details">
-              <div className="preview-item__price">${product.price.toFixed(2)}</div>
+              <div className="preview-item__price">
+                ${(product.price ?? 0).toFixed(2)}
+              </div>
               <div className="preview-item__qty">Qty: 1</div>
             </div>
           </div>
