@@ -4,10 +4,19 @@ import Buy from "./pages/Buy"
 import Checkout from "./pages/Checkout"
 import Product from "./pages/Product"
 import { useState } from "react"
+import { useEffect } from "react"
 
 function App() {
 
-  const [cartItem, setCartItem] = useState([]);
+  const [cartItem, setCartItem] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // Listen for changes to cartItem and update localStorage
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItem));
+  }, [cartItem]);
 
   return (
     <Routes>
