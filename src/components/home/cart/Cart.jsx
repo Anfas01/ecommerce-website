@@ -3,6 +3,7 @@ import CartItemCard from "./CartItemCard"
 
 function Cart({ isCartOpen, setIsCartOpen, cartItem, setCartItem }) {
 
+  const subTotal = cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <aside className={isCartOpen ? "cart-sidebar cart-sidebar--open" : `cart-sidebar `} >
@@ -29,7 +30,7 @@ function Cart({ isCartOpen, setIsCartOpen, cartItem, setCartItem }) {
       <div className="cart-sidebar__footer summary-checkout">
         <div className="summary-checkout__subtotal-row">
           <span>Subtotal</span>
-          <span className="summary-checkout__price-value"></span>
+          <span className="summary-checkout__price-value">${subTotal.toFixed(2)}</span>
         </div>
         <Link to="/checkout" className="summary-checkout__action-btn">Checkout</Link>
       </div>
