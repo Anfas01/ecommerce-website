@@ -94,7 +94,7 @@ function Buy() {
               <div className="invoice-panel__single-meta">
                 <h1 className="invoice-panel__single-name">{product.name}</h1>
                 <span className="invoice-panel__single-price">${product.price.toFixed(2)}</span>
-                <div>qty:
+                <div>Qty:
                   <span>
                     <i onClick={() => handleQuantityChange("-")} className="fa-solid fa-minus qty-minus"></i>
                     <span className="qty-value">{quantity}</span>
