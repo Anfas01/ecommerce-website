@@ -11,6 +11,10 @@ function Buy() {
   const product = database.find((item) => item.id === Number(id));
   const [quantity, setQuantity] = useState(1);
 
+  const subTotal = quantity * product.price;
+  const shippingFee = subTotal > 0 ? 5.99 : 0;
+  const grandTotal = subTotal + shippingFee;
+
   const handleQuantityChange = (operator) => {
     if (operator === "+") {
       if (quantity >= 3) return;
@@ -100,7 +104,21 @@ function Buy() {
               </div>
 
             </div>
-            <div className="invoice-panel__pricing-breakdown target-express-pricing-summary"></div>
+            <div className="invoice-panel__pricing-breakdown target-express-pricing-summary">
+              <div class="invoice-panel__billing-row">
+                <span>Subtotal</span>
+                <span>${subTotal.toFixed(2)}</span>
+              </div>
+              <div class="invoice-panel__billing-row">
+                <span>Shipping</span>
+                <span class="invoice-panel__shipping-badge-free">{shippingFee.toFixed(2)}</span>
+              </div>
+              <hr style={{ border: 0, borderTop: "1px solid var(--color-border)", margin: "4px 0" }} />
+              <div class="invoice-panel__billing-row invoice-panel__billing-row--bold-total">
+                <span>Total</span>
+                <span>${grandTotal.toFixed(2)}</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>
