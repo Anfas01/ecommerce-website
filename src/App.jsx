@@ -29,7 +29,7 @@ function App() {
         path="/buy/:id" element={<Buy />} />
       <Route
         path="/checkout" element={<Checkout
-          cartItem={cartItem} />} />
+          cartItem={cartItem} setCartItem={setCartItem} />} />
       <Route
         path="/product/:id" element={<Product
           cartItem={cartItem}

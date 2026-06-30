@@ -2,7 +2,7 @@ import CheckoutProductCart from "./CheckoutProductCard"
 
 
 
-function CheckoutMain({ cartItem }) {
+function CheckoutMain({ cartItem, setCartItem }) {
 
   const totalItems = cartItem.reduce((total, item) => total + item.quantity, 0);
   const subTotal = cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -13,7 +13,11 @@ function CheckoutMain({ cartItem }) {
     <main className="transaction-container">
       <section className="transaction-container__form-pane customer-form">
         <h2 className="customer-form__title">Delivery Details</h2>
-        <form className="customer-form__body">
+        <form className="customer-form__body" onSubmit={(e) => {
+          e.preventDefault();
+          setCartItem([]);
+        }
+        }>
 
           <div className="customer-form__row">
             <div className="customer-form__input-group">
