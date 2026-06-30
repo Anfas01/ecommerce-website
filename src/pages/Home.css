@@ -43,14 +43,11 @@
   backdrop-filter: none;
 }
 
-.site-header--transparent .category-drawer__link,
+.site-header--transparent,
 .site-header--transparent .cart-trigger-btn {
   color: #ffffff;
 }
 
-.site-header--transparent .category-drawer__link::after {
-  background-color: #ffffff;
-}
 
 /* --- Desktop Nav Controls & UI Drawer --- */
 
